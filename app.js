@@ -40,4 +40,7 @@ app.post('/add-pagamento', function(req, res){
     //res.send("Nome: " + req.body.nome + "<br>Valor: " + req.body.valor + "<br>") 
 })
 
-app.listen(8080);
+ //Inicia o servidor e disponibiliza a aplicação na porta 3000.
+  app.listen((process.env.PORT || 3000), function () {
+    console.log('listening on *:3000');
+  });
