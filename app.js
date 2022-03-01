@@ -15,6 +15,10 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Rotas
+app.get('/', function(req, res){
+    res.send("serfico foi!")
+});
+
 app.get('/cadastrocliente', function(req, res){
     res.render('cadastrocliente');
 });
