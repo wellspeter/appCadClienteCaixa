@@ -16,8 +16,6 @@ const { Telegraf } = require('telegraf')
 
 const bot = new Telegraf('5133302001:AAFfjSB6Hz_eVuPWaZ_0X0D4nCa5gdGhKa4');
 
-
-
 app.engine('handlebars', handlebars({defaultLayout: 'main'}))
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars')
@@ -27,28 +25,9 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Rotas
-
-//Rotas
 app.get('/', function(req, res){
     res.render('cadastrocliente');
 });
-
-app.get('/cadastrocliente', function(req, res){
-    res.render('cadastrocliente');
-});
-
-app.post('/add-pagamento', function(req, res){
-    //pagamento.create({
-    //    nome: req.body.nome,
-    //    valor: req.body.valor
-    //}).then(function(){
-    //    res.redirect('/pagamento')
-    //    //res.send("Pagamento cadastro com sucesso!")
-    //}).catch(function(erro){
-    //    res.send("Erro: Pagamento não foi cadastrado com sucesso!" + erro)
-   // })
-    //res.send("Nome: " + req.body.nome + "<br>Valor: " + req.body.valor + "<br>") 
-})
 
 app.post('/enviarform', function(req, res){
     var conversarTxt = 'Dados do officer \n Matricula:'+req.body.inpmatricula+'\n Escritório: '+req.body.cboescritorio +'\n Dados Cliente \n Nome: '+ req.body.inpnopmecliente+' \n CPF/CNPJ: '+ req.body.inpcnpjcpf+' \n email: ' + req.body.inpemail + '\n Telefone: ' + req.body.inptelefone + '\n Valor Inter Invs: ' + req.body.cbovalor + '\n Direcionamento do Cliente \n Tipo cliente: ' +  req.body.cboTipoCliente + '\n Urgencia Contato: '+ req.body.cboUrgenciaContato + '\n Tipo Invest: ' +  req.body.cboUrgenciaContato + '\n Tipo Invest: '+ req.body.cboTipoInvest + '\n OBS: '+ req.body.txtOBS
@@ -86,17 +65,6 @@ app.post('/enviarform', function(req, res){
         }
     })();
     */
-
-    //pagamento.create({
-    //    nome: req.body.nome,
-    //    valor: req.body.valor
-    //}).then(function(){
-    //    res.redirect('/pagamento')
-    //    //res.send("Pagamento cadastro com sucesso!")
-    //}).catch(function(erro){
-    //    res.send("Erro: Pagamento não foi cadastrado com sucesso!" + erro)
-   // })
-    //res.send("Nome: " + req.body.nome + "<br>Valor: " + req.body.valor + "<br>") 
 })
 
 app.listen((process.env.PORT || 3000), function () {
