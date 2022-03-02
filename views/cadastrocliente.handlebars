@@ -13,7 +13,7 @@
                 <!--      Wizard container        -->
                 <div class="wizard-container">
                     <div class="wizard-card" data-color="orange" id="wizard">
-                    <form action="" method="">
+                    <form action="/enviarform" method="POST">
                     <!--        You can switch " data-color="green" "  with one of the next bright colors: "blue", "azure", "orange", "red"       -->
 
                             <div class="wizard-header">
@@ -59,7 +59,6 @@
                                 </ul>
                             </div>
                             <div class="card" style="margin-top: 130px;">
-                                
                                 <div class="tab-content">
                                     <div class="tab-pane" id="location">
                                         <div class="row">
@@ -69,22 +68,16 @@
                                             <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="form-group">
                                                     <label>Matricula</label>
-                                                    <input type="text" class="form-control" id="" placeholder="">
+                                                    <input type="text" class="form-control" id="inpmatricula" name="inpmatricula" placeholder="">
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
                                                 <div class="form-group">
                                                     <label>Escritorio</label><br>
-                                                    <select name="country" class="form-control">
+                                                    <select name="cboescritorio" id="escritorio" class="form-control">
                                                         <option disabled="" selected="">- Selecione -</option>
-                                                        <option value="Afghanistan"> escritorio 1 </option>
-                                                        <option value="Albania"> escritorio 1 </option>
-                                                        <option value="Algeria"> escritorio 1 </option>
-                                                        <option value="American Samoa"> escritorio 1  </option>
-                                                        <option value="Andorra"> escritorio 1 </option>
-                                                        <option value="Angola"> escritorio 1 </option>
-                                                        <option value="Anguilla"> escritorio 1 </option>
-                                                        <option value="Antarctica"> escritorio 1 </option>
+                                                        <option value="escri-1"> escritorio 1 </option>
+                                                        <option value="escri-2"> escritorio 2 </option>
                                                         <option value="...">...</option>
                                                     </select>
                                                 </div>
@@ -97,34 +90,34 @@
                                             <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="form-group">
                                                     <label>Nome</label>
-                                                    <input type="text" class="form-control" id="" placeholder="Informe nome completo">
+                                                    <input type="text" class="form-control" name="inpnopmecliente" id="inpnopmecliente" placeholder="Informe nome completo">
                                                 </div>
                                             </div>
                                             <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="form-group">
                                                     <label>CPF/CNPJ</label>
-                                                    <input type="text" class="form-control" id="" placeholder="Informe somente numeros">
+                                                    <input type="text" class="form-control" id="inpcnpjcpf" name="inpcnpjcpf" placeholder="Informe somente numeros">
                                                 </div>
                                             </div>
                                             <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" id="" placeholder="">
+                                                    <input type="text" class="form-control" name="inpemail" id="inpemail" placeholder="">
                                                 </div>
                                             </div>
                                             <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="form-group">
                                                     <label>Telefone</label>
-                                                    <input type="text" class="form-control" id="" placeholder="">
+                                                    <input type="text" class="form-control" name="inptelefone" id="inptelefone" placeholder="">
                                                 </div>
                                             </div>
-                                            <div class="col-sm-5">
+                                            <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="form-group">
                                                     <label>Faixa de valor </label><br>
-                                                    <select name="country" class="form-control">
+                                                    <select name="cbovalor" id="valor" class="form-control">
                                                         <option disabled="" selected="">- Selecione -</option>
-                                                        <option value="Afghanistan"> 1 A 5 MM </option>
-                                                        <option value="Albania"> 5 a 50 MM </option>														
+                                                        <option value="1-5mm"> 1 A 5 MM </option>
+                                                        <option value="5-50mm"> 5 a 50 MM </option>														
                                                         <option value="...">...</option>
                                                     </select>
                                                 </div>
@@ -137,31 +130,31 @@
                                             <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="form-group">
                                                     <label>Tipo</label>
-                                                    <select class="form-control">
+                                                    <select class="form-control" id="tipoCliente" name="cboTipoCliente">
                                                         <option disabled="" selected="">- Selecione -</option>
-                                                        <option>AGRO</option>
-                                                        <option>ATACADO </option>
-                                                        <option>PRIVATE</option>
+                                                        <option value="agro">AGRO</option>
+                                                        <option value="atacado">ATACADO </option>
+                                                        <option value="private">PRIVATE</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
                                                 <div class="form-group">
                                                     <label>Velocidade de contato</label>
-                                                    <select class="form-control">
+                                                    <select class="form-control" id="urgenciaContato" name="cboUrgenciaContato">
                                                         <option disabled="" selected="">- Selecione -</option>
-                                                        <option>Urgente</option>
-                                                        <option>Medio </option>
+                                                        <option value="urgente">Urgente</option>
+                                                        <option value="medio">Medio </option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-5 col-sm-offset-1">
                                                 <div class="form-group">
                                                     <label>Tipo de Investimento</label>
-                                                    <select class="form-control">
+                                                    <select class="form-control" id="tipoInvest" name="cboTipoInvest">
                                                         <option disabled="" selected="">- Selecione -</option>
-                                                        <option>Investimentos</option>
-                                                        <option>Linha de crédito</option>
+                                                        <option value="invest">Investimentos</option>
+                                                        <option value="cred">Linha de crédito</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -172,7 +165,7 @@
                                             <h5 class="info-text"> Alguma observacao do cliente. </h5>
                                             <div class="col-sm-6 col-sm-offset-1">
                                                 <div class="form-group">
-                                                    <textarea class="form-control" placeholder="" rows="12"></textarea>
+                                                    <textarea class="form-control" placeholder="" rows="12" id="oBS" name="txtOBS"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -181,7 +174,7 @@
                                 <div class="wizard-footer">
                                     <div class="pull-right">
                                         <input type='button' class='btn btn-next btn-fill btn-danger btn-wd' name='next' value='Proximo' />
-                                        <input type='button' class='btn btn-finish btn-fill btn-danger btn-wd' name='finish' value='finalizar' />
+                                        <input type='submit' class='btn btn-finish btn-fill btn-danger btn-wd' name='finish' value='finalizar' />
                                     </div>
 
                                     <div class="pull-left">
@@ -199,7 +192,7 @@
 
     <div class="footer">
         <div class="container text-center">
-            Private <i class="fa fa-heart heart"></i> by <a href="https://www.creative-tim.com">GECFX</a>.
+            Private <i class="fa fa-heart heart"></i> by <a href="">GECFX - Wellison Peter</a>.
         </div>
     </div>
 </div>
