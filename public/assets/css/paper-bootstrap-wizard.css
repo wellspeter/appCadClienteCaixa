@@ -76,6 +76,28 @@ h1 small, h2 small, h3 small, h1 .small, h2 .small, h3 .small {
   color: rgba(0, 0, 0, 0.2);
 }
 
+.form-control-radio {
+  background-color: #F3F2EE;
+  border: 1px solid #e8e7e3;
+  border-radius: 4px;
+  color: #66615b;
+  font-size: 14px;
+  padding: 7px 18px;
+  height: 40px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  height: 17px;
+  width: 25px;
+}
+.form-control-radio-label {
+  text-align: center;
+  color: #2b3b46;
+  font-size: 20px;
+  font-weight: 350;
+  margin: 0;
+
+}
+
 .form-control {
   background-color: #F3F2EE;
   border: 1px solid #e8e7e3;
@@ -309,7 +331,7 @@ input[type="button"]:focus {
 }
 
 .wizard-container {
-  padding-top: 33px;
+  padding-top: 80px;
   z-index: 3;
 }
 
@@ -1165,6 +1187,26 @@ input[type="button"]:focus {
   transform: translateY(-10px);
 }
 
+.ml-auto, .mx-auto {
+  margin-left: auto !important;
+  float: right;
+}
+
+.icon-people {
+  font-size: 20px;
+  border: 3px solid #F3F2EE;
+  text-align: center;
+  border-radius: 50%;
+  color: rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  width: 45px;
+  height: 45px;
+  background-color: #FFFFFF;
+  padding-top: 7px;
+  position: relative;
+  top: 20px;
+}
+
 .wizard-card {
   min-height: 450px;
   box-shadow: 0 20px 16px -15px rgba(0, 0, 0, 0.57);
@@ -1339,6 +1381,14 @@ input[type="button"]:focus {
   font-weight: 400;
   margin: 0;
 }
+.wizard-card .wizard-title-small {
+  text-align: center;
+  padding-bottom: 18px;
+  color: #2b3b46;
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+}
 .wizard-card .category {
   font-size: 12px;
   font-weight: 400;
@@ -1366,6 +1416,7 @@ input[type="button"]:focus {
   padding-bottom: 18px;
   padding-top: 12px;
 }
+
 .wizard-card .choice {
   text-align: center;
   cursor: pointer;

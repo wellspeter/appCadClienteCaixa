@@ -1,0 +1,93 @@
+
+<a href="">
+    <div class="" style="position: absolute; top: -30px; left: -20px;">
+        <div class="">
+            <img src="assets/img/novaLogoInternas.png" style="">
+        </div>
+    </div>
+</a>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="wizard-container" id="loginModal">
+                <div class="wizard-card">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Login para Cad Clientes</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="box">
+                                    <div class="content">
+                                        <div class="division">
+                                            <div class="line l"></div>
+                                                <span>.</span>
+                                            <div class="line r"></div>
+                                        </div>
+                                        <div class="error"></div>
+                                        <div class="">
+                                            <form method="" action="" accept-charset="UTF-8">
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <div class="form-group">
+                                                        <input id="matriculaLogin" class="form-control" type="text" placeholder="Matrícula" name="matriculaLogin">
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <div class="form-group">
+                                                        <select name="cboescritorio" id="escritorio" class="form-control">
+                                                            <option selected="">- Escritorio -</option>
+                                                            <option value="escri-1"> escritorio 1 </option>
+                                                            <option value="escri-2"> escritorio 2 </option>
+                                                            <option value="...">...</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <div class="form-group">
+                                                        <input id="password" class="form-control" type="password" placeholder="Password" name="password">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="wizard-footer" style="margin-bottom: 30px;">
+                                                    <div class="pull-right">
+                                                        <input class="btn btn-default btn-login"  type="button" value="Login" onclick="loginAjax()">
+                                                    </div>    
+                                                </div>
+                                                
+                                                
+                                            </form>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="forgot login-footer">
+                                <span>Você não tem login,
+                                        <a href="javascript: showRegisterForm();">Entre em contato.</a>
+                                ?</span>
+                            </div>
+                            <div class="forgot register-footer" style="display:none">
+                                    <span>Se você não tem conta?</span>
+                                    <a href="javascript: showLoginForm();">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+    });
+
+    function loginAjax(){
+        window.location.href = "/cadcliente";
+    }
+
+
+</script>

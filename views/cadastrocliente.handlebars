@@ -6,167 +6,419 @@
             </div>
         </div>
     </a>
+    
     <!--   Big container   -->
     <div class="container">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
+                <a href="/funcionario">
+                    <div class="ml-auto">
+                            <div class="icon-people">
+                                <i class="ti-direction-alt"></i>
+                            </div>
+                    </div>
+                </a>
                 <!--      Wizard container        -->
                 <div class="wizard-container">
                     <div class="wizard-card" data-color="orange" id="wizard">
-                    <form action="/enviarform" method="POST">
-                    <!--        You can switch " data-color="green" "  with one of the next bright colors: "blue", "azure", "orange", "red"       -->
-
-                            <div class="wizard-header">
-                                <h4 class="wizard-title">Prospecção de Clientes</h4>
-                                <p class="category">Cadastro dos cliente para futuro contato</p>
+                        <div class="wizard-header">
+                            <h4 class="wizard-title">Prospecção de Clientes</h4>
+                            <p class="category">Cadastro dos cliente para futuro contato</p>
+                        </div>
+                        <div class="form-group">
+                            <select name="eventos" id="cboeventos" class="form-control">
+                                <option disabled="" selected="">- SELECIONE O EVENTO -</option>
+                            </select>
+                        </div>
+                        <form action="/users" id="formCliente" method="POST">
+                        <!--        You can switch " data-color="green" "  with one of the next bright colors: "blue", "azure", "orange", "red"       -->
+                            <div class="row" id="div-tipocliente">
+                                <div class="col-sm-5">
+                                        <div class="form-group">
+                                        <select name="tipocliente" id="cbtipocliente" class="form-control">
+                                            <option disabled="" selected="">- SELECIONE O TIPO DE CLIENTE -</option>
+                                            <option value="cpf">PESSOA FÍSICA</option>
+                                            <option value="cpnj">PESSOA JURÍDICA</option>
+                                            <option value="revenda">REVENDA</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="wizard-navigation">
+                            <input type="hidden" id="inpevento" name="inpevento">
+                            <input type="hidden" id="inpmatricula" name="inpmatricula">
+                            <input type="hidden" id="inpescritorio" name="inpescritorio">
+                            <input type="hidden" id="inpescritoriocod" name="inpescritoriocod">
+                            
+                            <!--
+                            /*******************************************************************************/
+                            /************************ PESSOA FISICA e JURIDICA *****************************/
+                            /*******************************************************************************/ -->
+                            <div class="wizard-navigation" id="cliente-pf-bar">
                                 <div class="progress-with-circle">
                                     <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" style="width: 15%;"></div>
                                 </div>
                                 <ul>
-                                    <li>
-                                        <a href="#location" data-toggle="tab">
-                                            <div class="icon-circle">
-                                                <i class="ti-map"></i>
-                                            </div>
-                                            Dados Officer
-                                        </a>
+                                    <li id="li-" >
+     
+                                            <a href="#aba1" data-toggle="tab" >
+                                                <div class="icon-circle">
+                                                    <i class="ti-map"></i>
+                                                </div>
+                                                <div id="titulo-tab-aba1">Cliente</div>
+                                            </a>
+
                                     </li>
                                     <li>
-                                        <a href="#type" data-toggle="tab">
+                                        <a href="#aba2" data-toggle="tab">
                                             <div class="icon-circle">
                                                 <i class="ti-direction-alt"></i>
                                             </div>
-                                            Dados Cliente
+                                            <div id="titulo-tab-aba2">Enquadramento</div>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#facilities" data-toggle="tab">
+                                        <a href="#aba3" data-toggle="tab">
                                             <div class="icon-circle">
                                                 <i class="ti-panel"></i>
                                             </div>
-                                            Dados Caixa
+                                            <div id="titulo-tab-aba3">Orçamento</div>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#description" data-toggle="tab">
+                                        <a href="#aba4" data-toggle="tab">
                                             <div class="icon-circle">
                                                 <i class="ti-comments"></i>
                                             </div>
-                                            Comentario
+                                            <div id="titulo-tab-aba4">observação</div>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="card" style="margin-top: 130px;">
+                            <div class="card" style="margin-top: 130px;" id="card-cliente">
                                 <div class="tab-content">
-                                    <div class="tab-pane" id="location">
-                                        <div class="row">
+                                    <!-- ------------------------- ABA1 -------------------------------------- -->
+                                    <div class="tab-pane" id="aba1">
+                                        <div class="row" id="div-tipocliente">
                                             <div class="col-sm-12">
-                                                <h5 class="info-text"> Dados do Officer</h5>
+                                                <h3 class="wizard-title-small" id="titulo-card-aba1"> Cliente</h3>
                                             </div>
-                                            <div class="col-sm-5 col-sm-offset-1">
+                                        </div>
+                                        <div class="row" id="div-cliente">
+                                            <div class="col-sm-5 col-sm-offset-1" id="div-cliente-cpf">
+                                                <label>CPF</label>
                                                 <div class="form-group">
-                                                    <label>Matricula</label>
-                                                    <input type="text" class="form-control" id="inpmatricula" name="inpmatricula" placeholder="">
+                                                    <input type="cpf" class="form-control" name="CPF" id="inpCpf" placeholder="INFORME O CPF" required>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-5">
+                                            <div class="col-sm-5 col-sm-offset-1" id="div-cliente-cnpj">
+                                                <label>CNPJ</label>
                                                 <div class="form-group">
-                                                    <label>Escritorio</label><br>
-                                                    <select name="cboescritorio" id="escritorio" class="form-control">
-                                                        <option disabled="" selected="">- Selecione -</option>
-                                                        <option value="escri-1"> escritorio 1 </option>
-                                                        <option value="escri-2"> escritorio 2 </option>
-                                                        <option value="...">...</option>
+                                                    <input type="cnpj" class="form-control" name="CNPJ" id="inpCnpj" placeholder="INFORME O CNPJ" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <label>Nome do cliente prospectado</label>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="nomeCliente" id="inpnopmecliente" placeholder="NOME COMPLETO" minlength="3" required >
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <label>Estado do cliente</label>
+                                                <div class="form-group">
+                                                    <select name="uf" id="cb-uf-cliente" name="cbEstadoCliente" class="form-control" required>
+                                                        <option disabled="" selected="">- SELECIONE O UF -</option>
+                                                        <option value="AC">Acre</option>
+                                                        <option value="AL">Alagoas</option>
+                                                        <option value="AP">Amapá</option>
+                                                        <option value="AM">Amazonas</option>
+                                                        <option value="BA">Bahia</option>
+                                                        <option value="CE">Ceará</option>
+                                                        <option value="DF">Distrito Federal</option>
+                                                        <option value="ES">Espírito Santo</option>
+                                                        <option value="GO">Goiás</option>
+                                                        <option value="MA">Maranhão</option>
+                                                        <option value="MT">Mato Grosso</option>
+                                                        <option value="MS">Mato Grosso do Sul</option>
+                                                        <option value="MG">Minas Gerais</option>
+                                                        <option value="PA">Pará</option>
+                                                        <option value="PB">Paraíba</option>
+                                                        <option value="PR">Paraná</option>
+                                                        <option value="PE">Pernambuco</option>
+                                                        <option value="PI">Piauí</option>
+                                                        <option value="RJ">Rio de Janeiro</option>
+                                                        <option value="RN">Rio Grande do Norte</option>
+                                                        <option value="RS">Rio Grande do Sul</option>
+                                                        <option value="RO">Rondônia</option>
+                                                        <option value="RR">Roraima</option>
+                                                        <option value="SC">Santa Catarina</option>
+                                                        <option value="SP">São Paulo</option>
+                                                        <option value="SE">Sergipe</option>
+                                                        <option value="TO">Tocantins</option>
+                                                        <option value="EX">Estrangeiro</option>
                                                     </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <label>Município da residência do cliente</label>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="municipioCliente" id="inp-municipio" placeholder="MUNICÍPIO DA RESIDÊNCIA DO CLIENTE" minlength="3" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <label>Email</label>
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" name="emailCliente" id="inpemail" placeholder="" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <label>Numero Telefone</label>
+                                                <div class="form-group">
+                                                    <input type="celular" class="form-control" name="teleCliente" id="inpTeleCliente" placeholder="(00) 0000-00000" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" id="div-representate">
+                                            <div class="col-sm-5 col-sm-offset-1" id="div-cliente-cpf">
+                                                <label>A Revenda é cliente CAIXA?</label>
+                                                <div class="form-group">
+                                                    <select name="revendaCaixa" id="cb-revenda-caixa" class="form-control" required>
+                                                        <option disabled="" selected="">- SELECIONE -</option>
+                                                        <option value="sim">Sim</option>
+                                                        <option value="nao">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div id="div-revenda-caixa-sim">
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <label>Nome da Revenda *</label>
+                                                    <div class="form-group">
+                                                        <select name="nomeRevenda" id="cb-nome-revenda" class="form-control" required>
+                                                            <option disabled="" selected="">- SELECIONE A REVENDA -</option>
+                                                            <option value="ADAMA">ADAMA</option>
+                                                            <option value="AGRONELLI">AGRONELLI</option>
+                                                            <option value="OUTRO">OUTRO</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-sm-offset-1" id="div-nome-revenda">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="nomeRevendaEscrita" id="inp-nome-revenda" placeholder="INFORME O NOME DA REVENDA" required>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <!-- ------------------------- ABA2 -------------------------------------- -->
+                                    <div class="tab-pane" id="aba2">
+                                        <div class="col-sm-12">
+                                            <h3 class="wizard-title-small" id="titulo-aba2"> Enquadramento do Cliente</h3>
+                                        </div>
+                                        <div class="row">
+                                            <!--  CONTEUDO CLIENTE ABA2  -->
+                                            <div id="conteudo-aba2-cliente">
+                                                <div class="col-sm-5 col-sm-offset-1 form-row">
+                                                    <div class="form-group">
+                                                        <input type="radio" class="form-control-radio" name="rb-enquadramento" id="rb-enquadramento-pronaf" value="pronaf"/> 
+                                                        <label class="form-control-radio-label">RONAF</label> 
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <div class="form-group">
+                                                        <input type="radio" class="form-control-radio" name="rb-enquadramento" id="rb-enquadramento-pronamp" value="pronamp"/> 
+                                                        <label class="form-control-radio-label">PRONAMP</label> 
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <div class="form-group">
+                                                        <input type="radio" class="form-control-radio"  name="rb-enquadramento" id="rb-enquadramento-demais" value="demais"/> 
+                                                        <label class="form-control-radio-label">DEMAIS</label> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--  CONTEUDO REVENDA ABA2  -->
+                                            <div id="conteudo-aba2-revenda">
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <label>Nome da revenda visitada *</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="revendaVisitada" id="inp-nome-revenda-visitada" placeholder="" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <label>CNPJ da Empresa *</label>
+                                                    <div class="form-group">
+                                                        <input type="cnpj" class="form-control" name="revendaVisitadaCNPJ"  id="inpCnpjRevendaVisitada" placeholder="00.000.000/0000-00" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <label>Estado</label>
+                                                    <div class="form-group">
+                                                        <select name="revendaVisitadaEstado" id="revendaVisitadaEstado" class="form-control" required>
+                                                            <option disabled="" selected="">- SELECIONE O UF -</option>
+                                                            <option value="AC">Acre</option>
+                                                            <option value="AL">Alagoas</option>
+                                                            <option value="AP">Amapá</option>
+                                                            <option value="AM">Amazonas</option>
+                                                            <option value="BA">Bahia</option>
+                                                            <option value="CE">Ceará</option>
+                                                            <option value="DF">Distrito Federal</option>
+                                                            <option value="ES">Espírito Santo</option>
+                                                            <option value="GO">Goiás</option>
+                                                            <option value="MA">Maranhão</option>
+                                                            <option value="MT">Mato Grosso</option>
+                                                            <option value="MS">Mato Grosso do Sul</option>
+                                                            <option value="MG">Minas Gerais</option>
+                                                            <option value="PA">Pará</option>
+                                                            <option value="PB">Paraíba</option>
+                                                            <option value="PR">Paraná</option>
+                                                            <option value="PE">Pernambuco</option>
+                                                            <option value="PI">Piauí</option>
+                                                            <option value="RJ">Rio de Janeiro</option>
+                                                            <option value="RN">Rio Grande do Norte</option>
+                                                            <option value="RS">Rio Grande do Sul</option>
+                                                            <option value="RO">Rondônia</option>
+                                                            <option value="RR">Roraima</option>
+                                                            <option value="SC">Santa Catarina</option>
+                                                            <option value="SP">São Paulo</option>
+                                                            <option value="SE">Sergipe</option>
+                                                            <option value="TO">Tocantins</option>
+                                                            <option value="EX">Estrangeiro</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <label>Cidade *</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="revendaVisitadaCidade" id="inp-cidade-revenda-visitada" placeholder="" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <label>Contato na Empresa *</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="revendaVisitadaNomeContato" id="inp-contato-revenda-visitada" placeholder="NOME DA PESSOA" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <label>Telefone da Empresa *</label>
+                                                    <div class="form-group">
+                                                        <input type="tel" class="form-control" name="revendaVisitadaTelefone" id="inpTeleRevendaVisitada" placeholder="(00) 00000-0000" required>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="type">
-                                        <h5 class="info-text">Dados do Cliente </h5>
+
+                                    <!-- ------------------------- ABA3 -------------------------------------- -->
+                                    <div class="tab-pane" id="aba3">
+                                        <div class="col-sm-12">
+                                            <h3 class="wizard-title-small" id="titulo-aba3">Cliente possui orçamento?</h3>
+                                        </div>
                                         <div class="row">
-                                            <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    <label>Nome</label>
-                                                    <input type="text" class="form-control" name="inpnopmecliente" id="inpnopmecliente" placeholder="Informe nome completo">
+                                            <div id="conteudo-aba3-cliente">
+                                                <div class="col-sm-5 col-sm-offset-1 text-center">
+                                                    <div class="form-group">
+                                                        <input type="radio" class="form-control-radio" name="rb-orcamento-cliente" value="sim"/> 
+                                                        <label class="form-control-radio-label">SIM</label> 
+                                                        <input type="radio" class="form-control-radio"  name="rb-orcamento-cliente" value="nao"/> 
+                                                        <label class="form-control-radio-label">NÃO</label> 
+                                                    </div>
+                                                </div>
+                                                <div id="orcamento-sim">
+                                                    <div class="col-sm-5 col-sm-offset-1">
+                                                        <label>Qual o valor? (desconsiderar os centavos) *</label>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="clienteOrcamentoValor" id="inpClienteOrcamentoValor" placeholder="R$ 0.000" onkeyup="somenteNumeros(this);" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5 col-sm-offset-1">
+                                                        <div class="form-group">
+                                                            <label>Revenda *</label>
+                                                            <select class="form-control" id="cbclienteOrcamentoRevenda" name="clienteOrcamentoRevenda" required>
+                                                                <option disabled="" selected="">- SELECIONE A REVENDA -</option>
+                                                                <option value="ADAMA">ADAMA</option>
+                                                                <option value="AGRONELLI">AGRONELLI</option>
+                                                                <option value="OUTRO">OUTRO</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5 col-sm-offset-1" id="div-nome-revenda-orcamento">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="clienteNomeRevendaEscritaOrcamento" id="inp-nome-revenda-orcamento" placeholder="INFORME O NOME DA REVENDA" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5 col-sm-offset-1">
+                                                        <label>Nome do Vendedor *</label>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="clienteOrcamentoNomeRevendendor" id="inpClienteOrcamentoNomeRevendendor" placeholder="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5 col-sm-offset-1">
+                                                        <label>Telefone do Vendedor *</label>
+                                                        <div class="form-group">
+                                                            <input type="celular" class="form-control" name="clienteOrcamentoTeleVendendor" id="inpClienteOrcamentoTeleVendendor" placeholder="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-5 col-sm-offset-1">
+                                                        <label>Enviar foto do Orcamento (arquivos aceitados: pdf, word, jpg, pdf)</label>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="clienteOrcamentoUpload" id="inpClienteOrcamentoUpload" placeholder="">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    <label>CPF/CNPJ</label>
-                                                    <input type="text" class="form-control" id="inpcnpjcpf" name="inpcnpjcpf" placeholder="Informe somente numeros">
+                                            <div id="conteudo-aba3-revenda">
+                                                <div class="col-sm-5 col-sm-offset-1 form-row">
+                                                    <div class="form-group">
+                                                        <input type="radio" class="form-control-radio" name="rb-parceria-caixa" value="sim"/> 
+                                                        <h4 style="margin-top: -25px; padding-left: 40px;">SIM - O expositor encaminhou propostas para serem avaliadas pelo VAREJO.</h4>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input type="text" class="form-control" name="inpemail" id="inpemail" placeholder="">
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <div class="form-group">
+                                                        <input type="radio" class="form-control-radio" name="rb-parceria-caixa" value="nao"/> 
+                                                        <h4 style="margin-top: -25px; padding-left: 40px;">Não - Pois os produtos não são financiados pela CAIXA, ou não são público alvo no momento.</h4>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    <label>Telefone</label>
-                                                    <input type="text" class="form-control" name="inptelefone" id="inptelefone" placeholder="">
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <div class="form-group">
+                                                        <input type="radio" class="form-control-radio"  name="rb-parceria-caixa" value="semabertura"/> 
+                                                        <h4 style="margin-top: -20px; padding-left: 40px;">Não - Sem Abertura pelo cliente.</h4>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    <label>Faixa de valor </label><br>
-                                                    <select name="cbovalor" id="valor" class="form-control">
-                                                        <option disabled="" selected="">- Selecione -</option>
-                                                        <option value="1-5mm"> 1 A 5 MM </option>
-                                                        <option value="5-50mm"> 5 a 50 MM </option>														
-                                                        <option value="...">...</option>
-                                                    </select>
+                                                <div class="col-sm-5 col-sm-offset-1" id="div-valor-direcio-proposta-revenda">
+                                                    <label>Qual pontencial de direcionamento  de propostas? (Volume em R$)</label>
+                                                    <div class="form-group">
+                                                        <input type="tel" class="form-control" name="pontecialDirecionamentoPorpostaExpositor" id="inp-valor--direcio-proposta-revenda" placeholder="R$ 0.000 (valor sem casa decimal" required>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="facilities">
-                                        <h5 class="info-text">Direcionamento do Cliente</h5>
-                                        <div class="row">
-                                            <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    <label>Tipo</label>
-                                                    <select class="form-control" id="tipoCliente" name="cboTipoCliente">
-                                                        <option disabled="" selected="">- Selecione -</option>
-                                                        <option value="agro">AGRO</option>
-                                                        <option value="atacado">ATACADO </option>
-                                                        <option value="private">PRIVATE</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-5">
-                                                <div class="form-group">
-                                                    <label>Velocidade de contato</label>
-                                                    <select class="form-control" id="urgenciaContato" name="cboUrgenciaContato">
-                                                        <option disabled="" selected="">- Selecione -</option>
-                                                        <option value="urgente">Urgente</option>
-                                                        <option value="medio">Medio </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-5 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    <label>Tipo de Investimento</label>
-                                                    <select class="form-control" id="tipoInvest" name="cboTipoInvest">
-                                                        <option disabled="" selected="">- Selecione -</option>
-                                                        <option value="invest">Investimentos</option>
-                                                        <option value="cred">Linha de crédito</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                    <!-- ------------------------- ABA4 -------------------------------------- -->
+                                    <div class="tab-pane" id="aba4">
+                                        <div class="col-sm-12">
+                                            <h3 class="wizard-title-small" id="titulo-aba4"></h3>
                                         </div>
-                                    </div>
-                                    <div class="tab-pane" id="description">
                                         <div class="row">
-                                            <h5 class="info-text"> Alguma observacao do cliente. </h5>
-                                            <div class="col-sm-6 col-sm-offset-1">
-                                                <div class="form-group">
-                                                    <textarea class="form-control" placeholder="" rows="12" id="oBS" name="txtOBS"></textarea>
+                                            <div id="conteudo-aba4-cliente">
+                                                <h5 class="info-text">Alguma observação do cliente. </h5>
+                                                <div class="col-sm-6 col-sm-offset-1">
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" placeholder="" rows="12" id="oBS" name="txtOBS" required></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="conteudo-aba4-revenda">
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <label>Conte-nos como foi a visita. *</label>
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" placeholder="Pontos relevantes e diagnósticos" rows="2" id="oBSVisita" name="txtVisitaRevenda" required></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-sm-offset-1">
+                                                    <label>Enviar foto do Orcamento (arquivos aceitados: pdf, word, jpg, pdf)</label>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="uploadArquivoRevenda" id="inp-upload" placeholder="">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -177,13 +429,17 @@
                                         <input type='button' class='btn btn-next btn-fill btn-danger btn-wd' name='next' value='Proximo' />
                                         <input type='submit' class='btn btn-finish btn-fill btn-danger btn-wd' name='finish' value='finalizar' />
                                     </div>
-
                                     <div class="pull-left">
                                         <input type='button' class='btn btn-previous btn-default btn-wd' name='previous' value='Anterior' />
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-                            </div>						
+                            </div>
+                            <!--
+                            /*******************************************************************************/
+                            /************************ PESSOA JURIDICA ****************************************/
+                            /*******************************************************************************/ -->
+
                         </form>
                     </div>
                 </div> <!-- wizard container -->
@@ -197,3 +453,405 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+    const localStorage = window.localStorage;
+    var charMap = {"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9","A":"A","B":"B","C":"C","D":"D","E":"E","F":"F","G":"G","H":"H","I":"I","J":"J","K":"K","L":"L","M":"M","N":"N","O":"O","P":"P","Q":"Q","R":"R","S":"S","T":"T","U":"U","V":"V","W":"W","X":"X","Y":"Y","Z":"Z","a":"a","b":"b","c":"c","d":"d","e":"e","f":"f","g":"g","h":"h","i":"i","j":"j","k":"k","l":"l","m":"m","n":"n","o":"o","p":"p","q":"q","r":"r","s":"s","t":"t","u":"u","v":"v","w":"w","x":"x","y":"y","z":"z","ª":"a","²":"2","³":"3","¹":"1","º":"o","À":"A","Á":"A","Â":"A","Ã":"A","Ä":"A","Å":"A","Ç":"C","È":"E","É":"E","Ê":"E","Ë":"E","Ì":"I","Í":"I","Î":"I","Ï":"I","Ð":"D","Ñ":"N","Ò":"O","Ó":"O","Ô":"O","Õ":"O","Ö":"O","Ø":"O","Ù":"U","Ú":"U","Û":"U","Ü":"U","Ý":"Y","à":"a","á":"a","â":"a","ã":"a","ä":"a","å":"a","ç":"c","è":"e","é":"e","ê":"e","ë":"e","ì":"i","í":"i","î":"i","ï":"i","ð":"d","ñ":"n","ò":"o","ó":"o","ô":"o","õ":"o","ö":"o","ø":"o","ù":"u","ú":"u","û":"u","ü":"u","ý":"y","ÿ":"y","Ā":"A","ā":"a","Ă":"A","ă":"a","Ą":"A","ą":"a","Ć":"C","ć":"c","Ĉ":"C","ĉ":"c","Ċ":"C","ċ":"c","Č":"C","č":"c","Ď":"D","ď":"d","Đ":"D","đ":"d","Ē":"E","ē":"e","Ĕ":"E","ĕ":"e","Ė":"E","ė":"e","Ę":"E","ę":"e","Ě":"E","ě":"e","Ĝ":"G","ĝ":"g","Ğ":"G","ğ":"g","Ġ":"G","ġ":"g","Ģ":"G","ģ":"g","Ĥ":"H","ĥ":"h","Ħ":"H","ħ":"h","Ĩ":"I","ĩ":"i","Ī":"I","ī":"i","Ĭ":"I","ĭ":"i","Į":"I","į":"i","İ":"I","Ĵ":"J","ĵ":"j","Ķ":"K","ķ":"k","Ĺ":"L","ĺ":"l","Ļ":"L","ļ":"l","Ľ":"L","ľ":"l","Ŀ":"L","ŀ":"l","Ł":"L","ł":"l","Ń":"N","ń":"n","Ņ":"N","ņ":"n","Ň":"N","ň":"n","Ō":"O","ō":"o","Ŏ":"O","ŏ":"o","Ő":"O","ő":"o","Ŕ":"R","ŕ":"r","Ŗ":"R","ŗ":"r","Ř":"R","ř":"r","Ś":"S","ś":"s","Ŝ":"S","ŝ":"s","Ş":"S","ş":"s","Š":"S","š":"s","Ţ":"T","ţ":"t","Ť":"T","ť":"t","Ũ":"U","ũ":"u","Ū":"U","ū":"u","Ŭ":"U","ŭ":"u","Ů":"U","ů":"u","Ű":"U","ű":"u","Ų":"U","ų":"u","Ŵ":"W","ŵ":"w","Ŷ":"Y","ŷ":"y","Ÿ":"Y","Ź":"Z","ź":"z","Ż":"Z","ż":"z","Ž":"Z","ž":"z","ſ":"s","Ơ":"O","ơ":"o","Ư":"U","ư":"u","Ǎ":"A","ǎ":"a","Ǐ":"I","ǐ":"i","Ǒ":"O","ǒ":"o","Ǔ":"U","ǔ":"u","Ǖ":"U","ǖ":"u","Ǘ":"U","ǘ":"u","Ǚ":"U","ǚ":"u","Ǜ":"U","ǜ":"u","Ǟ":"A","ǟ":"a","Ǡ":"A","ǡ":"a","Ǧ":"G","ǧ":"g","Ǩ":"K","ǩ":"k","Ǫ":"O","ǫ":"o","Ǭ":"O","ǭ":"o","ǰ":"j","Ǵ":"G","ǵ":"g","Ǹ":"N","ǹ":"n","Ǻ":"A","ǻ":"a","Ǿ":"O","ǿ":"o","Ȁ":"A","ȁ":"a","Ȃ":"A","ȃ":"a","Ȅ":"E","ȅ":"e","Ȇ":"E","ȇ":"e","Ȉ":"I","ȉ":"i","Ȋ":"I","ȋ":"i","Ȍ":"O","ȍ":"o","Ȏ":"O","ȏ":"o","Ȑ":"R","ȑ":"r","Ȓ":"R","ȓ":"r","Ȕ":"U","ȕ":"u","Ȗ":"U","ȗ":"u","Ș":"S","ș":"s","Ț":"T","ț":"t","Ȟ":"H","ȟ":"h","Ȧ":"A","ȧ":"a","Ȩ":"E","ȩ":"e","Ȫ":"O","ȫ":"o","Ȭ":"O","ȭ":"o","Ȯ":"O","ȯ":"o","Ȱ":"O","ȱ":"o","Ȳ":"Y","ȳ":"y","ʰ":"h","ʲ":"j","ʳ":"r","ʷ":"w","ʸ":"y","ˡ":"l","ˢ":"s","ˣ":"x","ͣ":"a","ͤ":"e","ͥ":"i","ͦ":"o","ͧ":"u","ͨ":"c","ͩ":"d","ͪ":"h","ͫ":"m","ͬ":"r","ͭ":"t","ͮ":"v","ͯ":"x","٠":"0","١":"1","٢":"2","٣":"3","٤":"4","٥":"5","٦":"6","٧":"7","٨":"8","٩":"9","۰":"0","۱":"1","۲":"2","۳":"3","۴":"4","۵":"5","۶":"6","۷":"7","۸":"8","۹":"9","߀":"0","߁":"1","߂":"2","߃":"3","߄":"4","߅":"5","߆":"6","߇":"7","߈":"8","߉":"9","०":"0","१":"1","२":"2","३":"3","४":"4","५":"5","६":"6","७":"7","८":"8","९":"9","০":"0","১":"1","২":"2","৩":"3","৪":"4","৫":"5","৬":"6","৭":"7","৮":"8","৯":"9","੦":"0","੧":"1","੨":"2","੩":"3","੪":"4","੫":"5","੬":"6","੭":"7","੮":"8","੯":"9","૦":"0","૧":"1","૨":"2","૩":"3","૪":"4","૫":"5","૬":"6","૭":"7","૮":"8","૯":"9","୦":"0","୧":"1","୨":"2","୩":"3","୪":"4","୫":"5","୬":"6","୭":"7","୮":"8","୯":"9","௦":"0","௧":"1","௨":"2","௩":"3","௪":"4","௫":"5","௬":"6","௭":"7","௮":"8","௯":"9","౦":"0","౧":"1","౨":"2","౩":"3","౪":"4","౫":"5","౬":"6","౭":"7","౮":"8","౯":"9","౸":"0","౹":"1","౺":"2","౻":"3","౼":"1","౽":"2","౾":"3","೦":"0","೧":"1","೨":"2","೩":"3","೪":"4","೫":"5","೬":"6","೭":"7","೮":"8","೯":"9","൦":"0","൧":"1","൨":"2","൩":"3","൪":"4","൫":"5","൬":"6","൭":"7","൮":"8","൯":"9","๐":"0","๑":"1","๒":"2","๓":"3","๔":"4","๕":"5","๖":"6","๗":"7","๘":"8","๙":"9","໐":"0","໑":"1","໒":"2","໓":"3","໔":"4","໕":"5","໖":"6","໗":"7","໘":"8","໙":"9","༠":"0","༡":"1","༢":"2","༣":"3","༤":"4","༥":"5","༦":"6","༧":"7","༨":"8","༩":"9","༪":"1","༫":"2","༬":"3","༭":"4","༮":"5","༯":"6","༰":"7","༱":"8","༲":"9","༳":"0","၀":"0","၁":"1","၂":"2","၃":"3","၄":"4","၅":"5","၆":"6","၇":"7","၈":"8","၉":"9","႐":"0","႑":"1","႒":"2","႓":"3","႔":"4","႕":"5","႖":"6","႗":"7","႘":"8","႙":"9","፩":"1","፪":"2","፫":"3","፬":"4","፭":"5","፮":"6","፯":"7","፰":"8","፱":"9","០":"0","១":"1","២":"2","៣":"3","៤":"4","៥":"5","៦":"6","៧":"7","៨":"8","៩":"9","៰":"0","៱":"1","៲":"2","៳":"3","៴":"4","៵":"5","៶":"6","៷":"7","៸":"8","៹":"9","᠐":"0","᠑":"1","᠒":"2","᠓":"3","᠔":"4","᠕":"5","᠖":"6","᠗":"7","᠘":"8","᠙":"9","᥆":"0","᥇":"1","᥈":"2","᥉":"3","᥊":"4","᥋":"5","᥌":"6","᥍":"7","᥎":"8","᥏":"9","᧐":"0","᧑":"1","᧒":"2","᧓":"3","᧔":"4","᧕":"5","᧖":"6","᧗":"7","᧘":"8","᧙":"9","᧚":"1","᪀":"0","᪁":"1","᪂":"2","᪃":"3","᪄":"4","᪅":"5","᪆":"6","᪇":"7","᪈":"8","᪉":"9","᪐":"0","᪑":"1","᪒":"2","᪓":"3","᪔":"4","᪕":"5","᪖":"6","᪗":"7","᪘":"8","᪙":"9","᭐":"0","᭑":"1","᭒":"2","᭓":"3","᭔":"4","᭕":"5","᭖":"6","᭗":"7","᭘":"8","᭙":"9","᮰":"0","᮱":"1","᮲":"2","᮳":"3","᮴":"4","᮵":"5","᮶":"6","᮷":"7","᮸":"8","᮹":"9","᱀":"0","᱁":"1","᱂":"2","᱃":"3","᱄":"4","᱅":"5","᱆":"6","᱇":"7","᱈":"8","᱉":"9","᱐":"0","᱑":"1","᱒":"2","᱓":"3","᱔":"4","᱕":"5","᱖":"6","᱗":"7","᱘":"8","᱙":"9","ᴬ":"A","ᴮ":"B","ᴰ":"D","ᴱ":"E","ᴳ":"G","ᴴ":"H","ᴵ":"I","ᴶ":"J","ᴷ":"K","ᴸ":"L","ᴹ":"M","ᴺ":"N","ᴼ":"O","ᴾ":"P","ᴿ":"R","ᵀ":"T","ᵁ":"U","ᵂ":"W","ᵃ":"a","ᵇ":"b","ᵈ":"d","ᵉ":"e","ᵍ":"g","ᵏ":"k","ᵐ":"m","ᵒ":"o","ᵖ":"p","ᵗ":"t","ᵘ":"u","ᵛ":"v","ᵢ":"i","ᵣ":"r","ᵤ":"u","ᵥ":"v","ᵹ":"g","ᶜ":"c","ᶞ":"d","ᶠ":"f","ᶻ":"z","᷊":"r","ᷓ":"a","ᷗ":"c","ᷘ":"d","ᷙ":"d","ᷚ":"g","ᷜ":"k","ᷝ":"l","ᷠ":"n","ᷤ":"s","ᷥ":"s","ᷦ":"z","Ḁ":"A","ḁ":"a","Ḃ":"B","ḃ":"b","Ḅ":"B","ḅ":"b","Ḇ":"B","ḇ":"b","Ḉ":"C","ḉ":"c","Ḋ":"D","ḋ":"d","Ḍ":"D","ḍ":"d","Ḏ":"D","ḏ":"d","Ḑ":"D","ḑ":"d","Ḓ":"D","ḓ":"d","Ḕ":"E","ḕ":"e","Ḗ":"E","ḗ":"e","Ḙ":"E","ḙ":"e","Ḛ":"E","ḛ":"e","Ḝ":"E","ḝ":"e","Ḟ":"F","ḟ":"f","Ḡ":"G","ḡ":"g","Ḣ":"H","ḣ":"h","Ḥ":"H","ḥ":"h","Ḧ":"H","ḧ":"h","Ḩ":"H","ḩ":"h","Ḫ":"H","ḫ":"h","Ḭ":"I","ḭ":"i","Ḯ":"I","ḯ":"i","Ḱ":"K","ḱ":"k","Ḳ":"K","ḳ":"k","Ḵ":"K","ḵ":"k","Ḷ":"L","ḷ":"l","Ḹ":"L","ḹ":"l","Ḻ":"L","ḻ":"l","Ḽ":"L","ḽ":"l","Ḿ":"M","ḿ":"m","Ṁ":"M","ṁ":"m","Ṃ":"M","ṃ":"m","Ṅ":"N","ṅ":"n","Ṇ":"N","ṇ":"n","Ṉ":"N","ṉ":"n","Ṋ":"N","ṋ":"n","Ṍ":"O","ṍ":"o","Ṏ":"O","ṏ":"o","Ṑ":"O","ṑ":"o","Ṓ":"O","ṓ":"o","Ṕ":"P","ṕ":"p","Ṗ":"P","ṗ":"p","Ṙ":"R","ṙ":"r","Ṛ":"R","ṛ":"r","Ṝ":"R","ṝ":"r","Ṟ":"R","ṟ":"r","Ṡ":"S","ṡ":"s","Ṣ":"S","ṣ":"s","Ṥ":"S","ṥ":"s","Ṧ":"S","ṧ":"s","Ṩ":"S","ṩ":"s","Ṫ":"T","ṫ":"t","Ṭ":"T","ṭ":"t","Ṯ":"T","ṯ":"t","Ṱ":"T","ṱ":"t","Ṳ":"U","ṳ":"u","Ṵ":"U","ṵ":"u","Ṷ":"U","ṷ":"u","Ṹ":"U","ṹ":"u","Ṻ":"U","ṻ":"u","Ṽ":"V","ṽ":"v","Ṿ":"V","ṿ":"v","Ẁ":"W","ẁ":"w","Ẃ":"W","ẃ":"w","Ẅ":"W","ẅ":"w","Ẇ":"W","ẇ":"w","Ẉ":"W","ẉ":"w","Ẋ":"X","ẋ":"x","Ẍ":"X","ẍ":"x","Ẏ":"Y","ẏ":"y","Ẑ":"Z","ẑ":"z","Ẓ":"Z","ẓ":"z","Ẕ":"Z","ẕ":"z","ẖ":"h","ẗ":"t","ẘ":"w","ẙ":"y","ẛ":"s","Ạ":"A","ạ":"a","Ả":"A","ả":"a","Ấ":"A","ấ":"a","Ầ":"A","ầ":"a","Ẩ":"A","ẩ":"a","Ẫ":"A","ẫ":"a","Ậ":"A","ậ":"a","Ắ":"A","ắ":"a","Ằ":"A","ằ":"a","Ẳ":"A","ẳ":"a","Ẵ":"A","ẵ":"a","Ặ":"A","ặ":"a","Ẹ":"E","ẹ":"e","Ẻ":"E","ẻ":"e","Ẽ":"E","ẽ":"e","Ế":"E","ế":"e","Ề":"E","ề":"e","Ể":"E","ể":"e","Ễ":"E","ễ":"e","Ệ":"E","ệ":"e","Ỉ":"I","ỉ":"i","Ị":"I","ị":"i","Ọ":"O","ọ":"o","Ỏ":"O","ỏ":"o","Ố":"O","ố":"o","Ồ":"O","ồ":"o","Ổ":"O","ổ":"o","Ỗ":"O","ỗ":"o","Ộ":"O","ộ":"o","Ớ":"O","ớ":"o","Ờ":"O","ờ":"o","Ở":"O","ở":"o","Ỡ":"O","ỡ":"o","Ợ":"O","ợ":"o","Ụ":"U","ụ":"u","Ủ":"U","ủ":"u","Ứ":"U","ứ":"u","Ừ":"U","ừ":"u","Ử":"U","ử":"u","Ữ":"U","ữ":"u","Ự":"U","ự":"u","Ỳ":"Y","ỳ":"y","Ỵ":"Y","ỵ":"y","Ỷ":"Y","ỷ":"y","Ỹ":"Y","ỹ":"y","⁰":"0","ⁱ":"i","⁴":"4","⁵":"5","⁶":"6","⁷":"7","⁸":"8","⁹":"9","ⁿ":"n","₀":"0","₁":"1","₂":"2","₃":"3","₄":"4","₅":"5","₆":"6","₇":"7","₈":"8","₉":"9","ₐ":"a","ₑ":"e","ₒ":"o","ₓ":"x","ₕ":"h","ₖ":"k","ₗ":"l","ₘ":"m","ₙ":"n","ₚ":"p","ₛ":"s","ₜ":"t","ℂ":"C","ℊ":"g","ℋ":"H","ℌ":"H","ℍ":"H","ℎ":"h","ℏ":"h","ℐ":"I","ℑ":"I","ℒ":"L","ℓ":"l","ℕ":"N","ℙ":"P","ℚ":"Q","ℛ":"R","ℜ":"R","ℝ":"R","ℤ":"Z","ℨ":"Z","K":"K","Å":"A","ℬ":"B","ℭ":"C","ℯ":"e","ℰ":"E","ℱ":"F","ℳ":"M","ℴ":"o","ℹ":"i","ⅅ":"D","ⅆ":"d","ⅇ":"e","ⅈ":"i","ⅉ":"j","Ⅰ":"I","Ⅴ":"V","Ⅹ":"X","Ⅼ":"L","Ⅽ":"C","Ⅾ":"D","Ⅿ":"M","ⅰ":"i","ⅴ":"v","ⅹ":"x","ⅼ":"l","ⅽ":"c","ⅾ":"d","ⅿ":"m","ↅ":"6","①":"1","②":"2","③":"3","④":"4","⑤":"5","⑥":"6","⑦":"7","⑧":"8","⑨":"9","Ⓐ":"A","Ⓑ":"B","Ⓒ":"C","Ⓓ":"D","Ⓔ":"E","Ⓕ":"F","Ⓖ":"G","Ⓗ":"H","Ⓘ":"I","Ⓙ":"J","Ⓚ":"K","Ⓛ":"L","Ⓜ":"M","Ⓝ":"N","Ⓞ":"O","Ⓟ":"P","Ⓠ":"Q","Ⓡ":"R","Ⓢ":"S","Ⓣ":"T","Ⓤ":"U","Ⓥ":"V","Ⓦ":"W","Ⓧ":"X","Ⓨ":"Y","Ⓩ":"Z","ⓐ":"a","ⓑ":"b","ⓒ":"c","ⓓ":"d","ⓔ":"e","ⓕ":"f","ⓖ":"g","ⓗ":"h","ⓘ":"i","ⓙ":"j","ⓚ":"k","ⓛ":"l","ⓜ":"m","ⓝ":"n","ⓞ":"o","ⓟ":"p","ⓠ":"q","ⓡ":"r","ⓢ":"s","ⓣ":"t","ⓤ":"u","ⓥ":"v","ⓦ":"w","ⓧ":"x","ⓨ":"y","ⓩ":"z","⓪":"0","⓵":"1","⓶":"2","⓷":"3","⓸":"4","⓹":"5","⓺":"6","⓻":"7","⓼":"8","⓽":"9","⓿":"0","❶":"1","❷":"2","❸":"3","❹":"4","❺":"5","❻":"6","❼":"7","❽":"8","❾":"9","➀":"1","➁":"2","➂":"3","➃":"4","➄":"5","➅":"6","➆":"7","➇":"8","➈":"9","➊":"1","➋":"2","➌":"3","➍":"4","➎":"5","➏":"6","➐":"7","➑":"8","➒":"9","ⱼ":"j","ⱽ":"V","〇":"0","〡":"1","〢":"2","〣":"3","〤":"4","〥":"5","〦":"6","〧":"7","〨":"8","〩":"9","꘠":"0","꘡":"1","꘢":"2","꘣":"3","꘤":"4","꘥":"5","꘦":"6","꘧":"7","꘨":"8","꘩":"9","Ꝺ":"D","ꝺ":"d","Ꝼ":"F","ꝼ":"f","Ᵹ":"G","Ꞃ":"R","ꞃ":"r","Ꞅ":"S","ꞅ":"s","Ꞇ":"T","ꞇ":"t","Ꞡ":"G","ꞡ":"g","Ꞣ":"K","ꞣ":"k","Ꞥ":"N","ꞥ":"n","Ꞧ":"R","ꞧ":"r","Ꞩ":"S","ꞩ":"s","꣐":"0","꣑":"1","꣒":"2","꣓":"3","꣔":"4","꣕":"5","꣖":"6","꣗":"7","꣘":"8","꣙":"9","꤀":"0","꤁":"1","꤂":"2","꤃":"3","꤄":"4","꤅":"5","꤆":"6","꤇":"7","꤈":"8","꤉":"9","꧐":"0","꧑":"1","꧒":"2","꧓":"3","꧔":"4","꧕":"5","꧖":"6","꧗":"7","꧘":"8","꧙":"9","꩐":"0","꩑":"1","꩒":"2","꩓":"3","꩔":"4","꩕":"5","꩖":"6","꩗":"7","꩘":"8","꩙":"9","꯰":"0","꯱":"1","꯲":"2","꯳":"3","꯴":"4","꯵":"5","꯶":"6","꯷":"7","꯸":"8","꯹":"9","０":"0","１":"1","２":"2","３":"3","４":"4","５":"5","６":"6","７":"7","８":"8","９":"9","Ａ":"A","Ｂ":"B","Ｃ":"C","Ｄ":"D","Ｅ":"E","Ｆ":"F","Ｇ":"G","Ｈ":"H","Ｉ":"I","Ｊ":"J","Ｋ":"K","Ｌ":"L","Ｍ":"M","Ｎ":"N","Ｏ":"O","Ｐ":"P","Ｑ":"Q","Ｒ":"R","Ｓ":"S","Ｔ":"T","Ｕ":"U","Ｖ":"V","Ｗ":"W","Ｘ":"X","Ｙ":"Y","Ｚ":"Z","ａ":"a","ｂ":"b","ｃ":"c","ｄ":"d","ｅ":"e","ｆ":"f","ｇ":"g","ｈ":"h","ｉ":"i","ｊ":"j","ｋ":"k","ｌ":"l","ｍ":"m","ｎ":"n","ｏ":"o","ｐ":"p","ｑ":"q","ｒ":"r","ｓ":"s","ｔ":"t","ｕ":"u","ｖ":"v","ｗ":"w","ｘ":"x","ｙ":"y","ｚ":"z"} ;
+
+    var myHeaders = new Headers();
+    var myInit = { method: 'GET',
+                headers: myHeaders,
+                mode: 'cors',
+                cache: 'default' };
+
+    $(document).ready(function(){
+        //configuracoes de visualizacao quando a pagina e carregada
+        document.getElementById('cliente-pf-bar').hidden = true;
+        document.getElementById('orcamento-sim').hidden = true;
+        document.getElementById('card-cliente').hidden = true;    
+        document.getElementById('div-revenda-caixa-sim').hidden = true;    
+        document.getElementById('div-nome-revenda').hidden = true;
+        document.getElementById('conteudo-aba2-cliente').hidden = true;
+        document.getElementById('div-valor-direcio-proposta-revenda').hidden = true;
+        document.getElementById('div-nome-revenda-orcamento').hidden = true;    
+        
+        // populando o combo inicial
+        var myRequest = new Request('/getAllFeirasEventos', myInit);
+        return fetch(myRequest)
+            .then(response => response.json())
+            .then(text => {
+                //console.log(text);
+                popListFeiras(text);
+            }).catch(err => {
+                console.error('Erro ao popular o Combo de Eventos', err);
+            }
+        );
+    });
+
+    //configurando as mascaras
+    function addMascarasClienteCPF(){
+        $("#inpCpf").mask("999.999.999-99", {completed:function(){ 
+            var validator = $( "#formCliente" ).validate();
+            validator.element( "#inpCpf" );
+        }});
+        $("#inpTeleCliente").mask("(99) 99999-9999", {completed:function(){ 
+            var validator = $( "#formCliente" ).validate();
+            validator.element( "#inpTeleCliente" );
+        }});
+        
+    }
+    function addMascarasClienteCNPJ(){
+        $("#inpCnpj").mask("99.999.999/9999-99", {completed:function(){ 
+            var validator = $( "#formCliente" ).validate();
+            validator.element( "#inpCnpj" );
+        }});
+        $("#inpTeleCliente").mask("(99) 99999-9999", {completed:function(){ 
+            var validator = $( "#formCliente" ).validate();
+            validator.element( "#inpTeleCliente" );
+        }});
+        $("#inpClienteOrcamentoTeleVendendor").mask("(99) 99999-9999", {completed:function(){ 
+            var validator = $( "#formCliente" ).validate();
+            validator.element( "#inpClienteOrcamentoTeleVendendor" );
+        }});
+        
+    }
+    function addMascarasClienteRevenda(){
+        $("#inpCnpjRevendaVisitada").mask("99.999.999/9999-99", {completed:function(){ 
+            var validator = $( "#formCliente" ).validate();
+            validator.element( "#inpCnpjRevendaVisitada" );
+        }});
+        $("#inpTeleRevendaVisitada").mask("(99) 99999-9999");
+    }
+
+    function popInpDados(){
+        document.getElementById('inpmatricula').value = localStorage.getItem("matricula");
+        document.getElementById('inpescritorio').value = localStorage.getItem("escritorio-nome");
+        document.getElementById('inpescritoriocod').value = localStorage.getItem("escritorio-codigo"); 
+        console.log(localStorage.getItem("matricula"));
+    }
+
+    /**  popular combo de eventos e feiras **/
+    function popListFeiras(value){
+        $.each(value,function(i,varfeiraevento){
+            $("#cboeventos").append($('<option>',{
+                value: varfeiraevento.id,
+                text: varfeiraevento.nome
+            }))
+        })
+    }
+
+    function somenteNumeros(num) {
+        var er = /[^0-9.]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
+    }
+
+    /***   aba cliente  **/
+    window.addEventListener('load', () => {
+
+        //colocar o dado do tipo do evento em um input para passar no form
+        document.getElementById('cboeventos').addEventListener('change', (e) => { 
+            document.getElementById('inpevento').value = e.target.value;
+            popInpDados();
+        });
+
+        //combo tipo de cliente
+        document.getElementById('cbtipocliente').addEventListener('change', (e) => { 
+            //debugger
+            switch (e.target.value) {
+                case 'cpf':
+                    document.getElementById('titulo-tab-aba1').innerHTML = 'Cliente' 
+                    document.getElementById('div-representate').hidden = true; 
+                    document.getElementById('div-cliente-cpf').hidden = false;
+                    document.getElementById('div-cliente-cnpj').hidden = true; 
+                    document.getElementById('div-cliente').hidden = false;  
+                    document.getElementById('titulo-card-aba1').innerHTML = 'Cliente PF'
+                    document.getElementById('card-cliente').hidden = false;
+                    document.getElementById('cliente-pf-bar').hidden = false;  
+                    document.getElementById('orcamento-sim').hidden = true;
+
+                    document.getElementById('titulo-tab-aba2').innerHTML = 'Enquadramento'
+                    document.getElementById('titulo-aba2').innerHTML = 'Enquadramento do Cliente'
+                    document.getElementById('conteudo-aba2-cliente').hidden = false;
+                    document.getElementById('conteudo-aba2-revenda').hidden = true;
+
+                    document.getElementById('titulo-tab-aba3').innerHTML = 'Orçamento'
+                    document.getElementById('titulo-aba3').innerHTML = 'Cliente possui orçamento?'
+                    document.getElementById('conteudo-aba3-cliente').hidden = false;
+                    document.getElementById('conteudo-aba3-revenda').hidden = true;
+
+                    document.getElementById('titulo-tab-aba4').innerHTML = 'Interação'
+                    document.getElementById('titulo-aba4').innerHTML = 'Alguma Observação'
+                    document.getElementById('conteudo-aba4-cliente').hidden = false;
+                    document.getElementById('conteudo-aba4-revenda').hidden = true;
+                    addMascarasClienteCPF();
+                    break;
+                case 'cpnj':
+                    document.getElementById('titulo-tab-aba1').innerHTML = 'Cliente'
+                    document.getElementById('card-cliente').hidden = false;
+                    document.getElementById('cliente-pf-bar').hidden = false;  
+                    document.getElementById('div-representate').hidden = true;
+                    document.getElementById('div-cliente').hidden = false;
+
+                    document.getElementById('titulo-card-aba1').innerHTML = 'Cliente PJ'
+                    document.getElementById('div-cliente-cpf').hidden = true;
+                    document.getElementById('div-cliente-cnpj').hidden = false;
+                    document.getElementById('orcamento-sim').hidden = true;
+                    
+                    document.getElementById('titulo-tab-aba2').innerHTML = 'Enquadramento'
+                    document.getElementById('titulo-aba2').innerHTML = 'Enquadramento do Cliente'
+                    document.getElementById('conteudo-aba2-cliente').hidden = false;
+                    document.getElementById('conteudo-aba2-revenda').hidden = true;
+ 
+                    document.getElementById('titulo-tab-aba3').innerHTML = 'Orçamento'
+                    document.getElementById('titulo-aba3').innerHTML = 'Cliente possui orçamento?'
+                    document.getElementById('conteudo-aba3-cliente').hidden = false;
+                    document.getElementById('conteudo-aba3-revenda').hidden = true;
+
+                    document.getElementById('titulo-tab-aba4').innerHTML = 'Interação'
+                    document.getElementById('titulo-aba4').innerHTML = 'Alguma Observação'
+                    document.getElementById('conteudo-aba4-cliente').hidden = false;
+                    document.getElementById('conteudo-aba4-revenda').hidden = true;
+                    addMascarasClienteCNPJ();
+                    break;
+                case 'revenda':
+                    document.getElementById('titulo-tab-aba1').innerHTML = 'Representante'
+                    document.getElementById('titulo-card-aba1').innerHTML = 'Representante'
+                    document.getElementById('orcamento-sim').hidden = true;
+                    document.getElementById('cliente-pf-bar').hidden = false;
+                    document.getElementById('card-cliente').hidden = true;
+                    document.getElementById('div-cliente').hidden = true;
+                    document.getElementById('div-revenda-caixa-sim').hidden = true;
+
+                    document.getElementById('titulo-tab-aba2').innerHTML = 'Empresa'
+                    document.getElementById('titulo-aba2').innerHTML = 'Empresa'
+                    document.getElementById('card-cliente').hidden = false;
+                    document.getElementById('conteudo-aba2-cliente').hidden = true;
+                    document.getElementById('conteudo-aba2-revenda').hidden = false;
+                    document.getElementById('div-representate').hidden = false;
+
+                    document.getElementById('titulo-tab-aba3').innerHTML = 'Parceria'
+                    document.getElementById('titulo-aba3').innerHTML = 'Houve parceria com a Caixa no evento?'
+                    document.getElementById('conteudo-aba3-cliente').hidden = true;
+                    document.getElementById('conteudo-aba3-revenda').hidden = false;
+                    document.getElementById('div-valor-direcio-proposta-revenda').hidden = true;
+
+                    document.getElementById('titulo-tab-aba4').innerHTML = 'Interação'
+                    document.getElementById('titulo-aba4').innerHTML = 'Houve parceria com a Caixa no evento?'
+                    document.getElementById('conteudo-aba4-cliente').hidden = true;
+                    document.getElementById('conteudo-aba4-revenda').hidden = false;
+                    addMascarasClienteRevenda();
+                    break;
+                default:
+            }
+            limparDocumento(e.target.value);
+        });
+/*
+        document.getElementById('inpClienteOrcamentoValor').addEventListener('keypress', (e) => { 
+            var char = String.fromCharCode(e.keyCode);
+            var teste = char.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+            debugger
+            return char.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        });
+*/
+        //comportamento radio button orcamento 
+        document.forms['formCliente'].elements['rb-orcamento-cliente'][0].addEventListener('change', (e) => { //radio sim
+            document.getElementById('orcamento-sim').hidden = false;
+            $("#inpClienteOrcamentoTeleVendendor").mask("(99) 99999-9999", {completed:function(){ 
+                var validator = $( "#formCliente" ).validate();
+                validator.element( "#inpClienteOrcamentoTeleVendendor" );
+            }});
+        });
+        document.forms['formCliente'].elements['rb-orcamento-cliente'][1].addEventListener('change', (e) => { // radio nao
+            document.getElementById('orcamento-sim').hidden = true;
+        });
+
+        // REVENDA 
+        /* COMBOBOX REVENDA CAIXA */
+        document.getElementById('cb-revenda-caixa').addEventListener('change', (e) => { 
+            if(e.target.value == 'sim'){ // sim
+                document.getElementById('div-revenda-caixa-sim').hidden = false;
+            }else{
+                document.getElementById('div-revenda-caixa-sim').hidden = true;
+            }
+        });
+
+        /* COMBOBOX NOME DA REVENDA CAIXA */
+        document.getElementById('cb-nome-revenda').addEventListener('change', (e) => { 
+            if(e.target.value == 'OUTRO'){ 
+                document.getElementById('div-nome-revenda').hidden = false;
+            }else{
+                document.getElementById('div-nome-revenda').hidden = true;
+            }
+        });
+
+        /* COMBOBOX NOME DA REVENDA CAIXA ORCAMENO */
+        document.getElementById('cbclienteOrcamentoRevenda').addEventListener('change', (e) => { 
+            if(e.target.value == 'OUTRO'){ 
+                document.getElementById('div-nome-revenda-orcamento').hidden = false;
+            }else{
+                document.getElementById('div-nome-revenda-orcamento').hidden = true;
+            }
+        });
+
+        //comportamento radio button orcamento 
+        document.forms['formCliente'].elements['rb-parceria-caixa'][0].addEventListener('change', (e) => { //radio sim
+            document.getElementById('div-valor-direcio-proposta-revenda').hidden = false;
+        });
+        document.forms['formCliente'].elements['rb-parceria-caixa'][1].addEventListener('change', (e) => { // radio nao
+            document.getElementById('div-valor-direcio-proposta-revenda').hidden = true;
+        });
+        document.forms['formCliente'].elements['rb-parceria-caixa'][2].addEventListener('change', (e) => { // radio nao
+            document.getElementById('div-valor-direcio-proposta-revenda').hidden = true;
+        });
+    }) 
+
+    function limparDocumento(value){
+        document.forms['formCliente'].reset();
+        var combotep = document.getElementById('cbtipocliente'); 
+        for (i = 0; i < combotep.options.length; i = i + 1) {
+            if(combotep.options[i].value === value){
+                combotep.selectedIndex = i;
+                break;
+            }
+        }
+    }
+
+    jQuery.extend(jQuery.validator.messages, {
+        required: "Este campo &eacute; requerido.",
+        remote: "Por favor, corrija este campo.",
+        email: "Por favor, forne&ccedil;a um endere&ccedil;o eletr&ocirc;nico v&aacute;lido.",
+        url: "Por favor, forne&ccedil;a uma URL v&aacute;lida.",
+        date: "Por favor, forne&ccedil;a uma data v&aacute;lida.",
+        dateISO: "Por favor, forne&ccedil;a uma data v&aacute;lida (ISO).",
+        number: "Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido.",
+        digits: "Por favor, forne&ccedil;a somente d&iacute;gitos.",
+        creditcard: "Por favor, forne&ccedil;a um cart&atilde;o de cr&eacute;dito v&aacute;lido.",
+        equalTo: "Por favor, forne&ccedil;a o mesmo valor novamente.",
+        accept: "Por favor, forne&ccedil;a um valor com uma extens&atilde;o v&aacute;lida.",
+        maxlength: jQuery.validator.format("Por favor, forne&ccedil;a n&atilde;o mais que {0} caracteres."),
+        minlength: jQuery.validator.format("Por favor, forne&ccedil;a ao menos {0} caracteres."),
+        rangelength: jQuery.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1} caracteres de comprimento."),
+        range: jQuery.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1}."),
+        max: jQuery.validator.format("Por favor, forne&ccedil;a um valor menor ou igual a {0}."),
+        min: jQuery.validator.format("Por favor, forne&ccedil;a um valor maior ou igual a {0}.")
+    });
+
+    jQuery.validator.addMethod('celular', function (value, element) {
+        value = value.replace("(","");
+        value = value.replace(")", "");
+        value = value.replace("-", "");
+        value = value.replace(" ", "").trim();
+        if (value == '0000000000') {
+            return (this.optional(element) || false);
+        } else if (value == '00000000000') {
+            return (this.optional(element) || false);
+        }
+        if (["00", "01", "02", "03", , "04", , "05", , "06", , "07", , "08", "09", "10"]
+        .indexOf(value.substring(0, 2)) != -1) {
+            return (this.optional(element) || false);
+        }
+        if (value.length < 10 || value.length > 11) {
+            return (this.optional(element) || false);
+        }
+        if (["6", "7", "8", "9"].indexOf(value.substring(2, 3)) == -1) {
+            return (this.optional(element) || false);
+        }
+        return (this.optional(element) || true);
+    }, 'Informe um número de telefone celular válido!');
+
+    jQuery.validator.addMethod('cpf', function (value, element) {
+       value = value.replace(/[^\d]+/g,'');	
+        if(value == '') return false;	
+        // Elimina CPFs invalidos conhecidos	
+        if (value.length != 11 || 
+            value == "00000000000" || 
+            value == "11111111111" || 
+            value == "22222222222" || 
+            value == "33333333333" || 
+            value == "44444444444" || 
+            value == "55555555555" || 
+            value == "66666666666" || 
+            value == "77777777777" || 
+            value == "88888888888" || 
+            value == "99999999999")
+                return false;		
+        // Valida 1o digito	
+        add = 0;	
+        for (i=0; i < 9; i ++)		
+            add += parseInt(value.charAt(i)) * (10 - i);	
+            rev = 11 - (add % 11);	
+            if (rev == 10 || rev == 11)		
+                rev = 0;	
+            if (rev != parseInt(value.charAt(9)))		
+                return false;		
+        // Valida 2o digito	
+        add = 0;	
+        for (i = 0; i < 10; i ++)		
+            add += parseInt(value.charAt(i)) * (11 - i);	
+        rev = 11 - (add % 11);	
+        if (rev == 10 || rev == 11)	
+            rev = 0;	
+        if (rev != parseInt(value.charAt(10)))
+            return false;		
+        return true;
+    }, 'Informe um CPF válido!');
+
+    jQuery.validator.addMethod('cnpj', function (value, element) {
+      value = value.replace(/[^\d]+/g,'');
+
+        if(value == '') return false;
+        
+        if (value.length != 14)
+            return false;
+    
+        // Elimina CNPJs invalidos conhecidos
+        if (value == "00000000000000" || 
+            value == "11111111111111" || 
+            value == "22222222222222" || 
+            value == "33333333333333" || 
+            value == "44444444444444" || 
+            value == "55555555555555" || 
+            value == "66666666666666" || 
+            value == "77777777777777" || 
+            value == "88888888888888" || 
+            value == "99999999999999")
+            return false;
+            
+        // Valida DVs
+        tamanho = value.length - 2
+        numeros = value.substring(0,tamanho);
+        digitos = value.substring(tamanho);
+        soma = 0;
+        pos = tamanho - 7;
+        for (i = tamanho; i >= 1; i--) {
+        soma += numeros.charAt(tamanho - i) * pos--;
+        if (pos < 2)
+                pos = 9;
+        }
+        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+        if (resultado != digitos.charAt(0))
+            return false;
+            
+        tamanho = tamanho + 1;
+        numeros = value.substring(0,tamanho);
+        soma = 0;
+        pos = tamanho - 7;
+        for (i = tamanho; i >= 1; i--) {
+        soma += numeros.charAt(tamanho - i) * pos--;
+        if (pos < 2)
+                pos = 9;
+        }
+        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+        if (resultado != digitos.charAt(1))
+            return false;
+            
+        return true;
+    }, 'Informe um CNPJ válido!');
+
+
+</script>

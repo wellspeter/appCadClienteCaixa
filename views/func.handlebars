@@ -1,0 +1,180 @@
+<div class="image-container set-full-height">
+    <a href="">
+        <div class="" style="position: absolute; top: -23px; left: -20px;">
+            <div class="">
+                <img src="assets/img/novaLogoInternas.png" style="">
+            </div>
+        </div>
+    </a>
+    
+    <!--   Big container   -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <!--      Wizard container        -->
+                <div class="wizard-container" style="margin-top: -40px;">
+                    <div class="wizard-card" data-color="orange" id="wizard">
+                    <form action="/cadFunc" method="POST">
+                    <!--        You can switch " data-color="green" "  with one of the next bright colors: "blue", "azure", "orange", "red"       -->
+                            <div class="wizard-header">
+                                <h4 class="wizard-title">Funcionário</h4>
+                                <p class="category">Cadastro de funcionários</p>
+                            </div>
+                            <div class="card" style="margin-top: 0px;">
+                                <a href="/cadcliente">
+                                    <div class="btn btn-default" style="margin-left: 10px;">Voltar</div>
+                                </a>
+                                <div class="tab-content" style="margin-top: -20px;">
+                                    <div class="row" id="cad-funcionario">
+                                        <div class="col-sm-12">
+                                            <h4 class="info-text"> Dados do Officer</h4>
+                                        </div>
+                                        <div class="col-sm-5 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <label>Matricula</label>
+                                                <input type="text" class="form-control" id="inpmatricula" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="form-group">
+                                                <label>Escritorio</label><br>
+                                                <select name="cboescritorio" id="escritorio" class="form-control">
+                                                    <option selected="">- Selecione -</option>
+                                                    <option value="escri-1"> escritorio 1 </option>
+                                                    <option value="escri-2"> escritorio 2 </option>
+                                                    <option value="...">...</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="pull-right">
+                                            <input type='button' class='btn btn-fill tn-wd' value='Salvar Matrícula' id="salveMatricula" />
+                                        </div>
+                                    </div>
+                                    <div class="row" id="informacao-funcionario">
+                                        <div class="col-sm-12">
+                                            <h4 class="info-text"> Dados do Officer</h4>
+                                        </div>
+                                        <div class="col-sm-5 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <h4 class="" id="labelMatricula"></h4>
+                                                <h4 class="" id="labelEscritorio"></h4>
+                                            </div>
+                                        </div>
+                                         <div class="pull-right">
+                                            <input type='button' class='btn btn-fill tn-wd' value='Alterar Matrícula' id="alterarMatricula" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wizard-footer">
+                                    <div class="pull-left">
+                                        <input type='button' class='btn btn-previous btn-default btn-wd' name='previous' value='Voltar' />
+                                    </div>
+                                </div>
+                            </div>						
+                        </form>
+                    </div>
+                </div> <!-- wizard container -->
+            </div>
+        </div> <!-- row -->
+    </div> <!--  big container -->
+
+    <div class="footer">
+        <div class="container text-center">
+            Private <i class="fa fa-heart heart"></i> by <a href="">GECFX - Wellison Peter</a>.
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var myHeaders = new Headers();
+    var myInit = { method: 'GET',
+                headers: myHeaders,
+                mode: 'cors',
+                cache: 'default' };
+
+    $(document).ready(function(){
+        inic();
+    });
+
+    function inic()
+    {
+        if (localStorage) {
+            if(localStorage.getItem("matricula")){
+                document.getElementById("cad-funcionario").hidden = true;
+                document.getElementById("informacao-funcionario").hidden = false;
+
+                document.getElementById("labelMatricula").innerHTML = "Matrícula: <b> " + localStorage.getItem("matricula") + "</b>";
+                document.getElementById("labelEscritorio").innerHTML = "Unidade: <b> " + localStorage.getItem("escritorio-nome")+ "</b>";
+               
+            }else{
+                document.getElementById("cad-funcionario").hidden = false;
+                document.getElementById("informacao-funcionario").hidden = true;
+             
+            }
+        }
+    }
+
+    window.addEventListener('load', () => { 
+        
+        document.getElementById('alterarMatricula').addEventListener('click', () => { 
+            localStorage.clear();
+            document.getElementById("cad-funcionario").hidden = false;
+            document.getElementById("informacao-funcionario").hidden = true;
+            document.getElementById("inpmatricula").value = '';
+            document.getElementById("escritorio").selectedIndex = 0;
+        });
+        
+        document.getElementById('salveMatricula').addEventListener('click', () => { 
+            if (localStorage) {
+                if(localStorage.getItem("matricula") || ''){
+                    document.getElementById("cad-funcionario").hidden = true;
+                    document.getElementById("informacao-funcionario").hidden = true;
+                }else{
+                    localStorage.setItem("matricula", document.getElementById("inpmatricula").value);
+                    localStorage.setItem("escritorio-codigo", document.getElementById("escritorio").value);
+                    var cboescritorioVar = document.getElementById("escritorio");
+                    localStorage.setItem("escritorio-nome", cboescritorioVar.options[cboescritorioVar.selectedIndex].text);
+                } 
+            }
+            document.getElementById("cad-funcionario").hidden = true;
+            document.getElementById("informacao-funcionario").hidden = false;
+
+           document.getElementById("labelMatricula").innerHTML = "Matrícula: <b> " + localStorage.getItem("matricula") + "</b>";
+                document.getElementById("labelEscritorio").innerHTML = "Unidade: <b> " + localStorage.getItem("escritorio-nome")+ "</b>";
+
+        });
+    })
+
+    const localStorage = window.localStorage;
+    /*
+
+    document.getElementById('alterarMatricula').addEventListener('click', () => { 
+            var myRequest = new Request('/get-func', myInit);
+            return fetch(myRequest)
+                .then(response => response.text())
+                .then(text => {
+                    console.log(text);
+                }).catch(err => {
+                    console.error('Cadastro não realizado', err);
+                });
+        });
+    $(document).ready(function(){
+        getDadosLocalStorage();
+    });
+
+    function setDadosLocalStorage()
+    {
+        if (localStorage) {
+            const mat = localStorage.getItem("matricula") || '';
+            localStorage.setItem("matricula", document.getElementById("inpmatricula").value);
+        }
+    }
+
+    function getDadosLocalStorage()
+    {
+        document.getElementById("labelMatricula").innerHTML = localStorage.getItem("matricula");
+        document.getElementById("labelEscritorio").innerHTML = localStorage.getItem("unidade");
+    }
+    */
+</script>
