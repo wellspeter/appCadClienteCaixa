@@ -218,19 +218,19 @@
                                             <div id="conteudo-aba2-cliente">
                                                 <div class="col-sm-5 col-sm-offset-1 form-row">
                                                     <div class="form-group">
-                                                        <input type="radio" class="form-control-radio" name="rb-enquadramento" id="rb-enquadramento-pronaf" value="pronaf"/> 
+                                                        <input type="radio" class="form-control-radio" name="rbenquadramento" id="rb-enquadramento-pronaf" value="pronaf" required /> 
                                                         <label class="form-control-radio-label">RONAF</label> 
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-5 col-sm-offset-1">
                                                     <div class="form-group">
-                                                        <input type="radio" class="form-control-radio" name="rb-enquadramento" id="rb-enquadramento-pronamp" value="pronamp"/> 
+                                                        <input type="radio" class="form-control-radio" name="rbenquadramento" id="rb-enquadramento-pronamp" value="pronamp" required /> 
                                                         <label class="form-control-radio-label">PRONAMP</label> 
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-5 col-sm-offset-1">
                                                     <div class="form-group">
-                                                        <input type="radio" class="form-control-radio"  name="rb-enquadramento" id="rb-enquadramento-demais" value="demais"/> 
+                                                        <input type="radio" class="form-control-radio"  name="rbenquadramento" id="rb-enquadramento-demais" value="demais" required /> 
                                                         <label class="form-control-radio-label">DEMAIS</label> 
                                                     </div>
                                                 </div>
@@ -316,9 +316,9 @@
                                             <div id="conteudo-aba3-cliente">
                                                 <div class="col-sm-5 col-sm-offset-1 text-center">
                                                     <div class="form-group">
-                                                        <input type="radio" class="form-control-radio" name="rb-orcamento-cliente" value="sim"/> 
+                                                        <input type="radio" class="form-control-radio" name="clienteRbOrcamento" value="sim" required /> 
                                                         <label class="form-control-radio-label">SIM</label> 
-                                                        <input type="radio" class="form-control-radio"  name="rb-orcamento-cliente" value="nao"/> 
+                                                        <input type="radio" class="form-control-radio"  name="clienteRbOrcamento" value="nao" required /> 
                                                         <label class="form-control-radio-label">NÃO</label> 
                                                     </div>
                                                 </div>
@@ -368,19 +368,19 @@
                                             <div id="conteudo-aba3-revenda">
                                                 <div class="col-sm-5 col-sm-offset-1 form-row">
                                                     <div class="form-group">
-                                                        <input type="radio" class="form-control-radio" name="rb-parceria-caixa" value="sim"/> 
+                                                        <input type="radio" class="form-control-radio" name="rb-parceria-caixa" value="sim" required /> 
                                                         <h4 style="margin-top: -25px; padding-left: 40px;">SIM - O expositor encaminhou propostas para serem avaliadas pelo VAREJO.</h4>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-5 col-sm-offset-1">
                                                     <div class="form-group">
-                                                        <input type="radio" class="form-control-radio" name="rb-parceria-caixa" value="nao"/> 
+                                                        <input type="radio" class="form-control-radio" name="rb-parceria-caixa" value="nao" required /> 
                                                         <h4 style="margin-top: -25px; padding-left: 40px;">Não - Pois os produtos não são financiados pela CAIXA, ou não são público alvo no momento.</h4>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-5 col-sm-offset-1">
                                                     <div class="form-group">
-                                                        <input type="radio" class="form-control-radio"  name="rb-parceria-caixa" value="semabertura"/> 
+                                                        <input type="radio" class="form-control-radio"  name="rb-parceria-caixa" value="semabertura" required /> 
                                                         <h4 style="margin-top: -20px; padding-left: 40px;">Não - Sem Abertura pelo cliente.</h4>
                                                     </div>
                                                 </div>
@@ -659,14 +659,14 @@
         });
 */
         //comportamento radio button orcamento 
-        document.forms['formCliente'].elements['rb-orcamento-cliente'][0].addEventListener('change', (e) => { //radio sim
+        document.forms['formCliente'].elements['clienteRbOrcamento'][0].addEventListener('change', (e) => { //radio sim
             document.getElementById('orcamento-sim').hidden = false;
             $("#inpClienteOrcamentoTeleVendendor").mask("(99) 99999-9999", {completed:function(){ 
                 var validator = $( "#formCliente" ).validate();
                 validator.element( "#inpClienteOrcamentoTeleVendendor" );
             }});
         });
-        document.forms['formCliente'].elements['rb-orcamento-cliente'][1].addEventListener('change', (e) => { // radio nao
+        document.forms['formCliente'].elements['clienteRbOrcamento'][1].addEventListener('change', (e) => { // radio nao
             document.getElementById('orcamento-sim').hidden = true;
         });
 
