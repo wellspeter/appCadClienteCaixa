@@ -1,7 +1,7 @@
 {
-  "name": "node_js_celke",
+  "name": "proscad",
   "version": "1.0.0",
-  "description": "cursonode",
+  "description": "prospeccao de clientes em feiras e eventos",
   "main": "app.js",
   "dependencies": {
     "@sendgrid/mail": "^7.6.1",
@@ -19,9 +19,9 @@
   },
   "scripts": {
     "test": "echo \\\"Error: no test specified\\\" && exit 1",
-    "start": "nodemon --inspect app.js",
+    "start": "nodemon app.js",
     "server-debug": "nodemon --inspect app.js"
   },
-  "author": "Cesar Szpak",
+  "author": "Wellison Peter - c145234",
   "license": "ISC"
 }
