@@ -68,7 +68,7 @@ app.post('/enviarform', function(req, res){  });
 app.listen((process.env.PORT || 3000), function () {
     console.log('listening on *:3000');
 });
-
+/*
 app.listen(httpPort, function () {
     console.log(`Listening on port ${httpPort}!`)
 });
@@ -76,3 +76,4 @@ app.listen(httpPort, function () {
 server.listen(httpsPort, function () {
     console.log(`Listening on port ${httpsPort}!`)
 });
+*/
