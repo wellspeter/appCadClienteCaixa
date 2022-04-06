@@ -25,14 +25,14 @@ const httpPort = 80;
 const httpsPort = 443;
 
 const server = https.createServer({key: key, cert: cert }, app);
-
+/*
 app.use((req, res, next) => {
     if (!req.secure) {
         return res.redirect('https://' + req.headers.host + req.url);
     }
     next();
 })
-
+*/
 //const pagamento = require("./models/Pagamento")
 
 /*****************************  ROTAS DE PAGINA ********************************************** */
