@@ -19,12 +19,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');    
 app.use(express.static(path.join(__dirname, 'public')));
 
-const key = fs.readFileSync('./certs/localhost.key');
-const cert = fs.readFileSync('./certs/localhost.crt');
-const httpPort = 80;
-const httpsPort = 443;
+//const key = fs.readFileSync('./certs/localhost.key');
+//const cert = fs.readFileSync('./certs/localhost.crt');
+//const httpPort = 80;
+//const httpsPort = 443;
 
-const server = https.createServer({key: key, cert: cert }, app);
+//const server = https.createServer({key: key, cert: cert }, app);
 /*
 app.use((req, res, next) => {
     if (!req.secure) {
