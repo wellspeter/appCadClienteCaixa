@@ -1,0 +1,42 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+
+.mat-form-field {
+    margin-top: -5px;
+}
+
+.inputStyle{
+    max-width: 500px;
+    width: 100%;
+}
+.separacaoTopo{
+    margin-top: 10px;
+}
+
+.separacaoTopoComponente{
+    margin-top: 30px;
+}
+
+.radio-group-vertical {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+}
+  
+.radio-button {
+    margin: 5px;
+}
+
+.mat-radio-button {
+    margin: 0 12px;
+}
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+    margin-bottom: 10px;
+}

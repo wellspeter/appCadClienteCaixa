@@ -1,0 +1,444 @@
+<div class="row h-100 d-flex justify-content-center align-items-center">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 col-xl-7">
+        <div class="wizard-container">
+            <div class="wizard-card" data-color="orange" id="wizard">
+                <div class="wizard-header">
+                    <h4 class="wizard-title">Prospecção de Clientes</h4>
+                    <p class="category">Cadastro dos cliente para futuro contato</p>
+                </div>
+                
+                <div class="form-group">
+                   <app-combo-eventos></app-combo-eventos>
+                </div>
+                <div class="form-group">
+                    <select (change)="selectTipoPessoa($any($event.target).value)"  class="form-control input">
+                        <option disabled="" selected >- SELECIONE O TIPO DE CLIENTE -</option>
+                        <option value="cpf">PESSOA FÍSICA</option>
+                        <option value="cpnj">PESSOA JURÍDICA</option>
+                        <option value="revenda">REVENDA</option>
+                     
+
+                    </select>
+                </div>
+                <div class="card" style="margin-top: 15px;" *ngIf="tipoCliente == 'cpf'">
+                    <form (ngSubmit)="submitPessoaFisica()">
+                        <mat-horizontal-stepper #stepper linear>
+                            <mat-step label="Dados Cliente" >
+                                <div class="separacaoTopo content" id="div-cliente"> 
+                                        <mat-form-field class="inputStyle" appearance="fill">
+                                            <mat-label>CPF</mat-label>
+                                            <input matInput 
+                                                mask="000.000.000-00" 
+                                                type="TEL" 
+                                                placeholder="000.000.000-00" 
+                                             > 
+                                         
+                                        </mat-form-field>
+
+                                        <mat-form-field class="inputStyle full-width" appearance="fill">
+                                            <mat-label>Nome do cliente Prospectado</mat-label>
+                                            <input matInput 
+                                                placeholder="NOME COMPLETO" 
+
+                                                >
+                                         
+                                        </mat-form-field>
+
+                                        <app-combo-estados></app-combo-estados>
+
+                                        <mat-form-field class="inputStyle full-width" appearance="fill">
+                                            <mat-label>Município da residência do cliente</mat-label>
+                                            <input matInput 
+                                                
+                                                >
+                                          
+                                        </mat-form-field>
+
+                                        <mat-form-field class="inputStyle full-width" appearance="fill">
+                                            <mat-label>Email</mat-label>
+                                            <input matInput type="email" 
+                                                placeholder="EX: NOME@GMAIL.COM"
+                                                >
+                                           
+                                        </mat-form-field>
+
+                                        <mat-form-field class="inputStyle" appearance="fill">
+                                            <mat-label>Numero Telefone</mat-label>
+                                            <input matInput 
+                                                type="tel" 
+                                                placeholder="(00) 00000-0000" 
+                                                >
+                                        </mat-form-field>
+                                    
+                                        <div class="rodapeAba">
+                                            <div class="pull-right">
+                                                <button mat-raised-button color="primary" matStepperNext>Próximo</button>
+                                            </div>
+                                            <div class="pull-left">
+                                                <button mat-raised-button color="warn" matStepperPrevious >Voltar</button>
+                                            </div>
+                                        </div>
+                                </div>
+                            </mat-step>
+                            <mat-step label="Enquadramento Cliente">
+                                <div class="separacaoTopo content">
+                                    <label id="radio-group-label">Enquadramento do Cliente</label>
+                                    <mat-radio-group
+                                        aria-labelledby="radio-group-label"
+                                        class="radio-group-vertical" >
+                                        <mat-radio-button class="radio-button" *ngFor="let enquadramentoCliente of listEnquadramentoCliente" [value]="enquadramentoCliente">
+                                            {{enquadramentoCliente}}
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                    <div class="rodapeAba">
+                                        <div class="pull-right">
+                                            <button mat-raised-button color="primary" matStepperNext >Próximo</button>
+                                        </div>
+                                        <div class="pull-left">
+                                            <button mat-raised-button color="warn" matStepperPrevious >Voltar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-step>
+                            <mat-step label="Orcamento">
+                                <div class="separacaoTopo content">
+
+                                    <label id="radio-group-label">Possui orçamento:</label>
+
+                                    <mat-radio-group [(ngModel)]="isOrcamentoClientePF"  name="orcamentoClientePJ" id="rborcamentoClientePJ">
+                                        <mat-radio-button value="SIM">SIM</mat-radio-button>
+                                        <mat-radio-button value="NAO">NÃO</mat-radio-button>
+                                    </mat-radio-group>
+
+                                    <div class="separacaoTopoComponente" *ngIf="isOrcamentoClientePF == 'SIM'">
+
+                                        <mat-form-field class="inputStyle" appearance="fill" >
+                                            <mat-label>Qual valor? (desconsiderar os centavos) *</mat-label>
+                                            <input matInput type="tel" placeholder="" value="" name="valorClienteOrcamentoPF" id="inpvalorClienteOrcamentoPF" >
+                                        </mat-form-field>
+
+                                        <app-combo-revenda></app-combo-revenda>
+                                          
+                                        <mat-form-field class="inputStyle" appearance="fill">
+                                            <mat-label>Nome do Vendendor *</mat-label>
+                                            <input matInput type="text" placeholder="" value="" name="nomeVedendorClienteOrcamentoPF" id="inpnomeVendendorClienteOrcamentoPF" >
+                                        </mat-form-field>
+
+                                        <mat-form-field class="inputStyle" appearance="fill">
+                                            <mat-label>Telefone do Vedendor *</mat-label>
+                                            <input matInput type="tel" placeholder="(00) 00000-0000" value="" name="teleClienteOrcamentoPF" id="inpTeleClienteOrcamentoPF" >
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="rodapeAba">
+                                       
+                                        <div class="pull-right">
+                                            <button mat-raised-button color="primary" matStepperNext >Próximo</button>
+                                        </div>
+                                        <div class="pull-left">
+                                            <button mat-raised-button color="warn" matStepperPrevious >Voltar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-step>
+                            <mat-step label="Comentario">
+                                <div class="separacaoTopo content">
+                                    <label id="radio-group-label">Alguma Observação:</label>
+
+                                    <mat-form-field class="full-width full-height" appearance="fill">
+                                        <mat-label>Observação do cliente e importante.</mat-label>
+                                        <textarea matInput #message maxlength="256" id="txtObsPF" name="obsPF" ></textarea>
+                                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                                    </mat-form-field>
+                                </div>
+                                <ng-template matStepLabel>Finalizado</ng-template>
+                            
+                                <div class="rodapeAba">
+                                    <div class="pull-right">
+                                        <button mat-raised-button color="primary" (click)="salvar()">Salvar</button>
+                                    </div>
+                                    <div class="pull-left">
+                                        <button mat-raised-button color="warn" matStepperPrevious >Voltar</button>
+                                        <button mat-stroked-button (click)="stepper.reset()">reiniciar</button>
+                                    </div>
+                                </div>
+
+                            </mat-step>
+                        </mat-horizontal-stepper>
+                    </form>
+                </div>
+                <div class="card" style="margin-top: 15px;" *ngIf="tipoCliente == 'cpnj'">
+                    <form class="">
+                        <mat-horizontal-stepper #stepperpj linear>
+                            <mat-step label="Dados Cliente">
+                                <div class="separacaoTopo content" id="div-cliente"> 
+                                        <mat-form-field class="inputStyle" appearance="fill">
+                                            <mat-label>CNPJ</mat-label>
+                                            <input matInput mask="00.000.000/0000-00" type="TEL" placeholder="00.000.000/0000-00" value="" name="nomeClientePJ" id="inpnopmeclientePJ">
+                                        </mat-form-field>
+
+                                        <mat-form-field class="inputStyle full-width" appearance="fill">
+                                            <mat-label>Nome do cliente Prospectado</mat-label>
+                                            <input matInput placeholder="NOME COMPLETO" value="" name="nomeClientePJ" id="inpnopmeclientePJ">
+                                        </mat-form-field>
+
+                                        <app-combo-estados></app-combo-estados>
+
+                                        <mat-form-field class="inputStyle full-width" appearance="fill">
+                                            <mat-label>Município da residência do cliente</mat-label>
+                                            <input matInput placeholder="" value="" name="municipioClientePJ" id="inpmunicipioPJ">
+                                        </mat-form-field>
+
+                                        <mat-form-field class="inputStyle full-width" appearance="fill">
+                                            <mat-label>Email</mat-label>
+                                            <input matInput type="email" placeholder="EX: NOME@GMAIL.COM" value="" name="emailClientePJ" id="inpemailPJ" >
+                                        </mat-form-field>
+
+                                        <mat-form-field class="inputStyle" appearance="fill">
+                                            <mat-label>Numero Telefone</mat-label>
+                                            <input matInput type="tel" placeholder="(00) 00000-0000" value="" name="teleClientePJ" id="inpTeleClientePJ" >
+                                        </mat-form-field>
+                                    
+                                        <div class="rodapeAba">
+                                            <div class="pull-right">
+                                                <button mat-raised-button color="primary" matStepperNext >Próximo</button>
+                                            </div>
+                                            <div class="pull-left">
+                                                <button mat-raised-button color="warn" matStepperPrevious >Voltar</button>
+                                            </div>
+                                        </div>
+                                </div>
+                            </mat-step>
+                            <mat-step label="Enquadramento Cliente">
+                                <div class="separacaoTopo content">
+                                    <label id="radio-group-label">Enquadramento do Cliente</label>
+                                    <mat-radio-group
+                                        id="rbEnquadramentoClientePJ"
+                                        name="enquadramentoClientePJ"
+                                        aria-labelledby="radio-group-label"
+                                        class="radio-group-vertical"
+                                        [(ngModel)]="enquadramentoDoCliente">
+                                        <mat-radio-button class="radio-button" *ngFor="let enquadramentoCliente of listEnquadramentoCliente" [value]="enquadramentoCliente">
+                                            {{enquadramentoCliente}}
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                    <div class="rodapeAba">
+                                        <div class="pull-right">
+                                            <button mat-raised-button color="primary" matStepperNext >Próximo</button>
+                                        </div>
+                                        <div class="pull-left">
+                                            <button mat-raised-button color="warn" matStepperPrevious >Voltar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-step>
+                            <mat-step label="Orcamento">
+                                <div class="separacaoTopo content">
+
+                                    <label id="radio-group-label">Possui orçamento:</label>
+
+                                    <mat-radio-group [(ngModel)]="isOrcamentoCliente" name="orcamentoClientePJ" id="rborcamentoClientePJ">
+                                        <mat-radio-button value="SIM">SIM</mat-radio-button>
+                                        <mat-radio-button value="NAO">NÃO</mat-radio-button>
+                                    </mat-radio-group>
+
+                                    <div class="separacaoTopoComponente" *ngIf="isOrcamentoCliente == 'SIM'">
+
+                                        <mat-form-field class="inputStyle" appearance="fill">
+                                            <mat-label>Qual valor? (desconsiderar os centavos) *</mat-label>
+                                            <input matInput type="tel" placeholder="" value="" name="valorClienteOrcamentoPJ" id="inpvalorClienteOrcamentoPJ" >
+                                        </mat-form-field>
+
+                                        <app-combo-revenda></app-combo-revenda>
+                                          
+                                        <mat-form-field class="inputStyle" appearance="fill">
+                                            <mat-label>Nome do Vendendor *</mat-label>
+                                            <input matInput type="text" placeholder="" value="" name="nomeVedendorClienteOrcamentoPJ" id="inpnomeVendendorClienteOrcamentoPJ" >
+                                        </mat-form-field>
+
+                                        <mat-form-field class="inputStyle" appearance="fill">
+                                            <mat-label>Telefone do Vedendor *</mat-label>
+                                            <input matInput type="tel" placeholder="(00) 00000-0000" value="" name="teleClienteOrcamentoPJ" id="inpTeleClienteOrcamentoPJ" >
+                                        </mat-form-field>
+                                    </div>
+
+                                    <div class="rodapeAba">
+                                        <div class="pull-right">
+                                            <button mat-raised-button color="primary" matStepperNext >Próximo</button>
+                                        </div>
+                                        <div class="pull-left">
+                                            <button mat-raised-button color="warn" matStepperPrevious >Voltar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-step>
+                            <mat-step label="Comentario">
+                                <div class="separacaoTopo content">
+                                    <label id="radio-group-label">Alguma Observação:</label>
+
+                                    <mat-form-field class="full-width full-height" appearance="fill">
+                                        <mat-label>Observação do cliente e importante.</mat-label>
+                                        <textarea matInput #message maxlength="256" id="txtObsPJ" name="obsPJ"></textarea>
+                                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                                    </mat-form-field>
+                                </div>
+                                <ng-template matStepLabel>Finalizado</ng-template>
+                            
+                                <div class="rodapeAba">
+                                    <div class="pull-right">
+                                        <button mat-raised-button color="primary" (click)="salvar()">Salvar</button>
+                                    </div>
+                                    <div class="pull-left">
+                                        <button mat-raised-button color="warn" matStepperPrevious >Voltar</button>
+                                        <button mat-stroked-button (click)="stepperpj.reset()">reiniciar</button>
+                                    </div>
+                                </div>
+
+                            </mat-step>
+                        </mat-horizontal-stepper>
+                    </form>
+                </div>
+                <div class="card" style="margin-top: 15px;" *ngIf="tipoCliente == 'revenda'">
+                    <form class="">
+                        <mat-horizontal-stepper #stepperRevenda linear>
+                            <mat-step label="Representante">
+                                <div class="separacaoTopo content" id="div-cliente"> 
+                                    <label id="radio-group-label">A revenda é um cliente CAIXA?</label>
+
+                                    <mat-radio-group [(ngModel)]="isRevendaCaixa" name="revendaClienteCaixa" id="rbRevendaCliente">
+                                        <mat-radio-button value="SIM">SIM</mat-radio-button>
+                                        <mat-radio-button value="NAO">NÃO</mat-radio-button>
+                                    </mat-radio-group>
+
+                                    <div *ngIf="isRevendaCaixa == 'SIM'">
+                                        <app-combo-revenda></app-combo-revenda>
+                                    </div>
+
+                                    <div class="rodapeAba">
+                                        <div class="pull-right">
+                                            <button mat-raised-button color="primary" matStepperNext >Próximo</button>
+                                        </div>
+                                        <div class="pull-left">
+                                            <button mat-raised-button color="warn" matStepperPrevious >Voltar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-step>
+                            <mat-step label="Empresa">
+                                <div class="separacaoTopo content">
+
+                                    <label id="radio-group-label">Empresa</label>
+                                    
+                                    <mat-form-field class="inputStyle" appearance="fill">
+                                        <mat-label>Nome da Revenda Visitada *</mat-label>
+                                        <input matInput type="text" placeholder="" value="" name="nomeRevendaVisitada" id="inpnomeRevendaVisitada" >
+                                    </mat-form-field>
+
+                                    <mat-form-field class="inputStyle" appearance="fill">
+                                        <mat-label>CNPJ</mat-label>
+                                        <input matInput mask="00.000.000/0000-00" type="TEL" placeholder="00.000.000/0000-00" value="" name="cnpjRevendaVisitada" id="inpCnpjRevendaVisitada">
+                                    </mat-form-field>
+
+                                    <app-combo-estados></app-combo-estados>
+
+                                    <mat-form-field class="inputStyle" appearance="fill">
+                                        <mat-label>Cidade *</mat-label>
+                                        <input matInput type="text" placeholder="" value="" name="cidadeRevendaVisitada" id="inpCidadeRevendaVisitada" >
+                                    </mat-form-field>
+                                        
+                                    <mat-form-field class="inputStyle" appearance="fill">
+                                        <mat-label>Contado na Empresa *</mat-label>
+                                        <input matInput type="text" placeholder="" value="" name="contatoRevendaVisitada" id="inpContatoRevendaVisitada" >
+                                    </mat-form-field>
+
+                                    <mat-form-field class="inputStyle" appearance="fill">
+                                        <mat-label>Telefone do Contato da Empresa *</mat-label>
+                                        <input matInput type="tel" placeholder="(00) 00000-0000" value="" name="teleRevendaVisitada" id="inpTeleRevendaVisitada" >
+                                    </mat-form-field>
+                                
+
+                                    <div class="rodapeAba">
+                                        <div class="pull-right">
+                                            <button mat-raised-button color="primary" matStepperNext >Próximo</button>
+                                        </div>
+                                        <div class="pull-left">
+                                            <button mat-raised-button color="warn" matStepperPrevious >Voltar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-step>
+
+                            <mat-step label="Parceria">
+                                <div class="separacaoTopo content">
+                                    <label id="radio-group-label">Houve parceria com a CAIXA no Evento?</label>
+                                    <mat-radio-group
+                                        id="rbParceriaRevendaVisitada"
+                                        name="parceriaRevendaVisitada"
+                                        aria-labelledby="radio-group-label"
+                                        class="radio-group-vertical"
+                                        [(ngModel)]="parceriaCaixaNoEvento">
+                                        <mat-radio-button class="radio-button" *ngFor="let parceriaCaixaNoEvento of listParceriaCaixaNoEvento" [value]="parceriaCaixaNoEvento.id">
+                                            {{parceriaCaixaNoEvento.nome}}
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+
+                                    <div *ngIf="parceriaCaixaNoEvento == 'sim'">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Qual o pontêncial de direcionamento de propostas? (volume em R$)</mat-label>
+                                            <input matInput placeholder="" value="" name="pontencialValorRevendaVisitada" id="inpPontencialValorRevendaVisitada">
+                                        </mat-form-field>
+                                    </div>
+
+                                    <mat-form-field class="inputStyle" appearance="fill">
+                                        <mat-label>Envio de foto do Orcamento (Arquivos aceitos: .pdf; .doc; .jpg) *</mat-label>
+                                        <input matInput type="tel" placeholder="(00) 00000-0000" value="" name="teleRevendaVisitada" id="inpTeleRevendaVisitada" >
+                                    </mat-form-field>
+
+                                    <div class="rodapeAba">
+                                        <div class="pull-right">
+                                            <button mat-raised-button color="primary" matStepperNext >Próximo</button>
+                                        </div>
+                                        <div class="pull-left">
+                                            <button mat-raised-button color="warn" matStepperPrevious >Voltar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-step>
+                            
+                            <mat-step label="Comentario">
+                                <div class="separacaoTopo content">
+                                    <label id="radio-group-label">Conte-nos como foi a visita:</label>
+
+                                    <mat-form-field class="full-width full-height" appearance="fill">
+                                        <mat-label>Pontos relevantes e diagnósticos</mat-label>
+                                        <textarea matInput #message maxlength="256" id="txtObsRevenda" name="obsRevenda"></textarea>
+                                        <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+                                    </mat-form-field>
+                                </div>
+                                <ng-template matStepLabel>Finalizado</ng-template>
+                            
+                                <div class="rodapeAba">
+                                    <div class="pull-right">
+                                        <button mat-raised-button color="primary" (click)="salvar()">Salvar</button>
+                                    </div>
+                                    <div class="pull-left">
+                                        <button mat-raised-button color="warn" matStepperPrevious >Voltar</button>
+                                        <button mat-stroked-button (click)="stepperRevenda.reset()">reiniciar</button>
+                                    </div>
+                                </div>
+
+                            </mat-step>
+                        </mat-horizontal-stepper>
+                    </form>
+                    
+                </div>
+               
+            </div>
+            <div class="footer">
+                <div class="container text-center">
+                    Private <i class="fa fa-heart heart"></i> by <a href="">GECFX - Wellison Peter</a>.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="row h-100 d-flex justify-content-center align-items-center">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="wizard-container">
+            <div class="wizard-card login-content">
+                <div class="login-header "> 
+                    <h4 class="login-title">Prospecção de Clientes</h4>
+                    <p class="category">Cadastro dos cliente para futuro contato</p>
+                </div>
+                <div class="login-body">
+                    <div class="box">
+                            <div class="content">
+                                <div class="division">
+                                    <div class="line l"></div>
+                                    <div class="line r"></div>
+                                </div>
+                                <div class="error"></div>
+                                <div class="" *ngIf="alteracaoSenha">
+                                    <form method="" action="" accept-charset="UTF-8">
+                                        <div class="form-group">
+                                            <input id="matriculaLogin" class="form-control input" type="text" placeholder="Matrícula" name="matriculaLogin">
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="senhaLogin" class="form-control input" type="password" placeholder="senha" name="senhaLogin">
+                                        </div>
+                                        <div class="">
+                                            <input class="btn btn-default btn-login"  type="button" value="Login" (click)="goToCadastro()">
+                                        </div>    
+                                    </form>
+                                </div>
+                                <div class="" *ngIf="alteracaoSenha">
+                                    <form method="" action="" accept-charset="UTF-8">
+                                        <div class="form-group">
+                                            <input id="matriculaLogin" class="form-control input" type="text" placeholder="Matrícula" name="matriculaLogin">
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="senhaLogin" class="form-control input" type="password" placeholder="senha" name="senhaLogin">
+                                        </div>
+                                        <div class="">
+                                            <input class="btn btn-default btn-login"  type="button" value="Login" (click)="goToCadastro()">
+                                        </div>    
+                                    </form>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="forgot login-footer">
+                        <span>Você não tem login,
+                                <a href="javascript: showRegisterForm();">Entre em contato</a>
+                        !</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

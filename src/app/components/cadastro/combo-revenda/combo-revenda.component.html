@@ -1,0 +1,18 @@
+<mat-form-field appearance="fill">
+    <mat-label>- Selecione a revenda  -</mat-label>
+    <mat-select [(value)]="isRevendaOutros">
+      <mat-option *ngFor="let revenda of revendas" [value]="revenda.id">
+        {{revenda.nome}}
+      </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<div *ngIf="isRevendaOutros == 1">
+    <mat-form-field appearance="fill">
+        <mat-label>Nome da revenda</mat-label>
+        <input matInput placeholder="" value="" name="nomeClienteRevendaOutro" id="inpnopmeclienteRevendaOutro">
+    </mat-form-field>
+</div>
+
+
+

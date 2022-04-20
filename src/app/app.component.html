@@ -1,0 +1,9 @@
+<ngb-alert #selfClosingAlert *ngIf="textMessage" (type)="typeAlert" (closed)="textMessage = ''">{{ textMessage }}</ngb-alert>
+<div class="" style="position: absolute; top: -30px; left: -20px; z-index: 9999;">
+  <div class="">
+      <img src="assets/img/novaLogoInternas.png" style="">
+  </div>
+</div>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

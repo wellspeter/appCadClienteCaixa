@@ -1,0 +1,7 @@
+<select name="eventos" id="cboeventos" class="form-control input">
+    <option disabled="" selected="">- SELECIONE O EVENTO  -</option>
+    <option *ngFor="let evento of eventos" [value]="evento.id" >{{evento.nome}}</option>
+</select>
+
+
+
